@@ -1,5 +1,15 @@
 # Patient Rail handoff
 
+## Independent verification 1 — FAIL
+
+Independent verification on 6 September 2026 reviewed implementation `78effd5` and documentation `3546e32`. The result is **FAIL** with three findings and one incompletely tested public claim. See `.factory/verification-1.md` for evidence and repair steps.
+
+- The live `/404` page blocks its inline CSS under the deployed CSP and logs a CSP console error.
+- At 390 by 844, the active board starts at y=823 and its first usable cell at y=831; it is not usable in the initial viewport.
+- The public assertion that every dated seed has a safe route is tested for only 366 fixed dates. Reword it to the verified scope or prove the complete domain.
+
+All declared claim commands, `npm test`, `npm run build`, fresh live win/loss/restart, offline reload, keyboard, privacy-origin, route, link, and named-route axe checks otherwise passed. Do not treat this handoff as a product acceptance until those three findings are repaired and independently retested.
+
 ## Outcome
 
 Patient Rail is a complete first-release browser game at <https://patient-rail.sociobot.in>. The active 7 by 7 board appears on the first screen. Each 15-turn run has three stops, one player action per turn, one visible enemy intent, seeded train layouts, seeded enemy families, and a final weather rule.
