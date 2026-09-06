@@ -169,14 +169,30 @@ test('@claim:resume-progress daily turn state survives reload', async ({ page })
   await expect(page.locator('.turn-log li')).toHaveCount(2);
 });
 
-test('@claim:settings-persist coordinate preference survives reload', async ({ page }) => {
+test('@claim:settings-persist both board settings survive reload', async ({ page }) => {
   await page.goto('/demo');
+  const intent = page.locator('[data-cell].is-intent');
+  await expect(intent).toHaveCSS('outline-width', '4px');
+  await expect(intent).not.toHaveCSS('box-shadow', 'none');
+
   await page.getByRole('button', { name: 'Board settings' }).click();
   await page.getByLabel('Show cell coordinates').uncheck();
+  await page.getByLabel('Use a heavier intent outline').uncheck();
   await page.getByRole('button', { name: 'Save and close' }).click();
+  await expect(page.locator('.coordinate:not(.is-hidden)')).toHaveCount(0);
+  await expect(page.locator('.coordinate.is-hidden')).toHaveCount(49);
+  await expect(intent).toHaveCSS('outline-width', '0px');
+  await expect(intent).toHaveCSS('box-shadow', 'none');
+
   await page.reload();
   await expect(page.locator('.coordinate:not(.is-hidden)')).toHaveCount(0);
   await expect(page.locator('.coordinate.is-hidden')).toHaveCount(49);
+  await expect(page.locator('[data-cell].is-intent')).toHaveCSS('outline-width', '0px');
+  await expect(page.locator('[data-cell].is-intent')).toHaveCSS('box-shadow', 'none');
+
+  await page.getByRole('button', { name: 'Board settings' }).click();
+  await expect(page.getByLabel('Show cell coordinates')).not.toBeChecked();
+  await expect(page.getByLabel('Use a heavier intent outline')).not.toBeChecked();
 });
 
 test('@claim:seed-variation dated seeds change all three generated rule groups', async () => {

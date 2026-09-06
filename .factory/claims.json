@@ -57,10 +57,10 @@
   },
   {
     "id": "settings-persist",
-    "claim": "Board coordinate settings persist in this browser.",
+    "claim": "Board coordinates and the heavier intent outline setting persist in this browser.",
     "where": "settings panel",
     "test": "npm test -- --grep @claim:settings-persist",
-    "sandbox": "fresh browser context; hide coordinates; reload; assert coordinate labels stay hidden"
+    "sandbox": "fresh browser context; hide coordinates and disable the heavier intent outline; assert both visual changes immediately and after reload; reopen settings and assert both controls remain off"
   },
   {
     "id": "invalid-no-turn",
