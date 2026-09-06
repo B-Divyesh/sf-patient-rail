@@ -1,6 +1,12 @@
 # Patient Rail handoff
 
-## Repair verification — PASS
+## Independent verification 2 — FAIL
+
+Independent QA on 6 September 2026 found one remaining medium issue and no untested claims. At 390 by 844, several secondary links are only 20–24 pixels high and **Reset demo** is 38 pixels high. This does not meet the required 44 by 44 CSS-pixel touch target baseline. See `.factory/verification-2.md` for measurements and complete evidence.
+
+All three findings from verification 1 are closed, all 12 claim commands pass independently, and both the clean local suite and live HTTPS suite pass. The implementation reviewed remains `0b56f836fbb81d7dfaaa7a5bf67464455336d640`; the pre-verification documentation and test-harness commit is `36afc80eef6b4473463ac21a9f92ca4237cee690`.
+
+## Repair verification results
 
 The three findings from independent verification 1 are repaired and retested on 6 September 2026. The deployed product implementation is `0b56f836fbb81d7dfaaa7a5bf67464455336d640`.
 
@@ -66,7 +72,8 @@ The separate billing operator can use `/work/.evidence/billing-offer.json`. It d
 
 ## Next steps
 
-1. Register the one-time offer through the Sociobot billing operator.
-2. Add the documented entitlement validation call to `/license` after the operator provides the registered contract.
-3. Re-test checkout, signed entitlement, restore purchase, and offline dated-seed selection before advertising activation.
-4. Measure the brief’s completion and return-rate goals only if a privacy-preserving, consented measurement plan is approved.
+1. Increase every phone interaction target to at least 44 by 44 CSS pixels, including demo, article, footer, activation, and email links; add an automated all-route target-size check.
+2. Register the one-time offer through the Sociobot billing operator.
+3. Add the documented entitlement validation call to `/license` after the operator provides the registered contract.
+4. Re-test checkout, signed entitlement, restore purchase, and offline dated-seed selection before advertising activation.
+5. Measure the brief’s completion and return-rate goals only if a privacy-preserving, consented measurement plan is approved.
