@@ -1,0 +1,574 @@
+{
+  "checked_at": "2026-09-06T03:45:16.835Z",
+  "base": "https://patient-rail.sociobot.in",
+  "phone": {
+    "title": "Patient Rail — turn-based train defense",
+    "lang": "en",
+    "h1": "Defend a train, one turn at a time",
+    "audience": "For roguelike players who want a readable 20-minute daily run without real-time combat.",
+    "scrollY": 0,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "body": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "sample_action_visible": true,
+    "intent_box": {
+      "x": 126,
+      "y": 752.59375,
+      "width": 44,
+      "height": 44
+    },
+    "intent_label": "C3. Copper beetle, 2 of 2 health. This enemy acts next. Press Enter to fire.",
+    "board_heading_visible": true
+  },
+  "desktop": {
+    "scrollY": 0,
+    "h1": "Defend a train, one turn at a time",
+    "audience": "For roguelike players who want a readable 20-minute daily run without real-time combat.",
+    "first_action_visible": true,
+    "board_heading_visible": true,
+    "intent_box": {
+      "x": 644.640625,
+      "y": 543.34375,
+      "width": 75.71875,
+      "height": 75.71875
+    }
+  },
+  "demo": {
+    "entry": {
+      "url": "https://patient-rail.sociobot.in/demo",
+      "banner": "Demo — sample run, nothing is saved to your daily game\nReset demo\nStart today’s run",
+      "seed": "SAMPLE-EMBER-7",
+      "cars": [
+        "Engine\n5 / 5\nWorkshop car\n5 / 5\nCargo car\n5 / 5"
+      ],
+      "intent": "Copper beetle will attack Engine for 1. Brace would block 1.",
+      "stops": [
+        "1\nAlder Junction\ncurrent stop",
+        "2\nCopper Cut\nupcoming",
+        "3\nSummit Shed\nupcoming"
+      ]
+    },
+    "banner_after_action": true,
+    "reset": {
+      "turn": "1",
+      "daily_unchanged": true,
+      "status": "The sample was reset. Daily progress was not changed."
+    },
+    "win": {
+      "actions": 15,
+      "heading": "Route complete",
+      "screen": "THREE STOPS COMPLETE\n\nRoute complete\n\nYou reached Summit Shed with 13 train integrity.\n\nThreats cleared\n10\nTurns used\n15\nBrake tokens\n3\nRestart sample"
+    },
+    "restart_after_win": {
+      "turn": "1",
+      "move1": true
+    },
+    "loss": {
+      "actions": 11,
+      "heading": "Train stopped",
+      "screen": "STOPPED ON TURN 11\n\nTrain stopped\n\nA train car lost all integrity before the final stop.\n\nThreats cleared\n0\nTurns used\n11\nBrake tokens\n3\nRestart sample"
+    },
+    "restart_after_loss": {
+      "turn": "1",
+      "integrity": [
+        "5 / 5",
+        "5 / 5",
+        "5 / 5"
+      ]
+    }
+  },
+  "keyboard": {
+    "turn": "2",
+    "status": "Braced the train for the shown intent. Copper beetle's 1 damage was blocked.",
+    "focused_cell": "D3. Empty ground cell.",
+    "labeled_cells": 49,
+    "dialog": {
+      "tag": "DIALOG",
+      "open": true,
+      "focused": "Close board settings"
+    },
+    "focus_return": "Board settings"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "Patient Rail — turn-based train defense",
+      "h1": 1,
+      "main": 1,
+      "headings": [
+        1,
+        2,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2
+      ],
+      "hrefs": [
+        "https://patient-rail.sociobot.in/#main",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/archive",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    {
+      "path": "/demo",
+      "status": 200,
+      "title": "Demo — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "headings": [
+        1,
+        2,
+        3,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
+        2
+      ],
+      "hrefs": [
+        "https://patient-rail.sociobot.in/demo#main",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/archive",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    {
+      "path": "/how-to-play",
+      "status": 200,
+      "title": "How to play — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "hrefs": [
+        "https://patient-rail.sociobot.in/how-to-play#main",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    {
+      "path": "/archive",
+      "status": 200,
+      "title": "Offline archive — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "headings": [
+        1,
+        2,
+        2
+      ],
+      "hrefs": [
+        "https://patient-rail.sociobot.in/archive#main",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/license",
+        "https://patient-rail.sociobot.in/terms",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    {
+      "path": "/license",
+      "status": 200,
+      "title": "Archive activation — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "headings": [
+        1
+      ],
+      "hrefs": [
+        "https://patient-rail.sociobot.in/license#main",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "title": "Privacy — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "hrefs": [
+        "https://patient-rail.sociobot.in/privacy#main",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "mailto:privacy@sociobot.in",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "title": "Terms — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "headings": [
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "hrefs": [
+        "https://patient-rail.sociobot.in/terms#main",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "mailto:support@sociobot.in",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    {
+      "path": "/not-found-check",
+      "status": 200,
+      "title": "Page not found — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "headings": [
+        1
+      ],
+      "hrefs": [
+        "https://patient-rail.sociobot.in/not-found-check#main",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/demo",
+        "https://patient-rail.sociobot.in/how-to-play",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/",
+        "https://patient-rail.sociobot.in/privacy",
+        "https://patient-rail.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    {
+      "path": "/404",
+      "status": 404,
+      "title": "Page not found — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "recovery": "/",
+      "background": "rgb(16, 42, 67)",
+      "ticket": "rgb(255, 247, 223)"
+    }
+  ],
+  "touch": [
+    {
+      "path": "/",
+      "status": 200,
+      "targets": 64,
+      "smallest_width": 44,
+      "smallest_height": 44,
+      "undersized": []
+    },
+    {
+      "path": "/demo",
+      "status": 200,
+      "targets": 66,
+      "smallest_width": 44,
+      "smallest_height": 44,
+      "undersized": []
+    },
+    {
+      "path": "/how-to-play",
+      "status": 200,
+      "targets": 8,
+      "smallest_width": 44,
+      "smallest_height": 44,
+      "undersized": []
+    },
+    {
+      "path": "/archive",
+      "status": 200,
+      "targets": 10,
+      "smallest_width": 44,
+      "smallest_height": 44,
+      "undersized": []
+    },
+    {
+      "path": "/license",
+      "status": 200,
+      "targets": 8,
+      "smallest_width": 44,
+      "smallest_height": 44,
+      "undersized": []
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "targets": 8,
+      "smallest_width": 44,
+      "smallest_height": 44,
+      "undersized": []
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "targets": 8,
+      "smallest_width": 44,
+      "smallest_height": 44,
+      "undersized": []
+    },
+    {
+      "path": "/not-found-check",
+      "status": 200,
+      "targets": 8,
+      "smallest_width": 44,
+      "smallest_height": 44,
+      "undersized": []
+    },
+    {
+      "path": "/404",
+      "status": 404,
+      "targets": 1,
+      "smallest_width": 201.5,
+      "smallest_height": 48,
+      "undersized": []
+    }
+  ],
+  "accessibility": [
+    {
+      "path": "/",
+      "serious_critical": [],
+      "total_violations": 1
+    },
+    {
+      "path": "/demo",
+      "serious_critical": [],
+      "total_violations": 1
+    },
+    {
+      "path": "/how-to-play",
+      "serious_critical": [],
+      "total_violations": 0
+    },
+    {
+      "path": "/archive",
+      "serious_critical": [],
+      "total_violations": 0
+    },
+    {
+      "path": "/license",
+      "serious_critical": [],
+      "total_violations": 0
+    },
+    {
+      "path": "/privacy",
+      "serious_critical": [],
+      "total_violations": 0
+    },
+    {
+      "path": "/terms",
+      "serious_critical": [],
+      "total_violations": 0
+    },
+    {
+      "path": "/not-found-check",
+      "serious_critical": [],
+      "total_violations": 0
+    },
+    {
+      "path": "/404",
+      "serious_critical": [],
+      "total_violations": 0
+    }
+  ],
+  "privacy": {
+    "origins": [
+      "https://patient-rail.sociobot.in"
+    ],
+    "local_storage_keys": [
+      "demo:patient-rail:run:v1",
+      "patient-rail:settings:v1"
+    ]
+  },
+  "offline": {
+    "heading": "Defend a train, one turn at a time",
+    "turn": "2"
+  },
+  "reduced_motion": {
+    "transition_duration": "1e-05s",
+    "animation_duration": "1e-05s"
+  },
+  "resize": {
+    "scroll_width": 390,
+    "client_width": 390,
+    "h1_visible": true,
+    "main_visible": true
+  },
+  "frame_sample": {
+    "frames": 181,
+    "duration_ms": 2999.9,
+    "fps": 60.002000066668884,
+    "max_interval_ms": 16.800000000000182
+  },
+  "errors": [],
+  "link_checks": [
+    {
+      "href": "https://patient-rail.sociobot.in/#main",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/demo",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/how-to-play",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/privacy",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/archive",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/terms",
+      "status": 200
+    },
+    {
+      "href": "https://sociobot.in/",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/demo#main",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/how-to-play#main",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/archive#main",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/license",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/license#main",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/privacy#main",
+      "status": 200
+    },
+    {
+      "href": "mailto:privacy@sociobot.in",
+      "status": "mailto"
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/terms#main",
+      "status": 200
+    },
+    {
+      "href": "mailto:support@sociobot.in",
+      "status": "mailto"
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/not-found-check#main",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/robots.txt",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/sitemap.xml",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/manifest.webmanifest",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/social-card.png",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/favicon.svg",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/apple-touch-icon.png",
+      "status": 200
+    }
+  ]
+}

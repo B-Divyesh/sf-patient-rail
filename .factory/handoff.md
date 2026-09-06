@@ -1,5 +1,19 @@
 # Patient Rail handoff
 
+## Independent verification 3 result
+
+Independent verification on 6 September 2026 reports **FAIL** for implementation `8231d0bff1695ee72d8d8a805c90f36d304d39d7` and documentation baseline `632b3ca4c0caa56cb90b254ca6d8df2844c9bc04`.
+
+The live implementation still passes the functional release gates: clean `npm ci`, all 12 declared claim commands, 7 engine tests, 26 browser tests, build, the same 33 tests against live HTTPS, full phone and desktop sample runs, offline reload, route and link checks, all 181 touch targets, and Lighthouse mobile 97/100/100/100. Its JavaScript and CSS hashes exactly match the clean build.
+
+Three findings remain:
+
+1. Axe reports a moderate `landmark-complementary-is-top-level` violation because the current-turn `aside` is nested inside `main` on `/` and `/demo`.
+2. The public 20-minute duration is quantitative but absent from `.factory/claims.json` and unmeasured.
+3. `@claim:keyboard-play` does not assert Arrow-key destination changes, Enter, Space, W, or all 49 spoken cell labels. Those controls worked in the fresh manual live check, but their public claim lacks complete automated proof.
+
+The full report is `.factory/verification-3.md`. Fresh evidence is under `.factory/evidence/verification-3/`, including first-screen, win, loss, axe, URL-verifier, runtime, and Lighthouse records. Do not mark the product PASS until the three findings are repaired and independently rechecked.
+
 ## Repair 2 result
 
 The remaining touch-target finding is repaired and verified on 6 September 2026. The implementation commit is `8231d0bff1695ee72d8d8a805c90f36d304d39d7`. It is pushed to `main` and deployed at <https://patient-rail.sociobot.in>.

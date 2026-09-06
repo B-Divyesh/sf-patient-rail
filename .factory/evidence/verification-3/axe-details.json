@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/",
+    "violations": [
+      {
+        "id": "landmark-complementary-is-top-level",
+        "impact": "moderate",
+        "help": "Aside should not be contained in another landmark",
+        "targets": [
+          [
+            "aside"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/demo",
+    "violations": [
+      {
+        "id": "landmark-complementary-is-top-level",
+        "impact": "moderate",
+        "help": "Aside should not be contained in another landmark",
+        "targets": [
+          [
+            ".turn-panel"
+          ]
+        ]
+      }
+    ]
+  }
+]

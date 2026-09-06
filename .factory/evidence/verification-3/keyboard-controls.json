@@ -1,0 +1,19 @@
+{
+  "url": "https://patient-rail.sociobot.in/demo",
+  "seed": "SAMPLE-EMBER-7",
+  "results": {
+    "Enter": {
+      "turn": 2,
+      "status": "Fired on Copper beetle for 2 damage. Threat cleared. The shown intent was cancelled."
+    },
+    "Space": {
+      "turn": 2,
+      "status": "Fired on Copper beetle for 2 damage. Threat cleared. The shown intent was cancelled."
+    },
+    "W": {
+      "turn": 2,
+      "status": "Held position without firing or patching. Copper beetle dealt 1 damage to Engine."
+    }
+  },
+  "note": "Each key was checked after resetting the live sample. The main live verification also checked ArrowRight, B, focus retention, and 49 labeled cells."
+}
