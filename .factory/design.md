@@ -22,6 +22,8 @@ This direction belongs to a turn-based train-defense game because a dispatcher r
 
 Body text uses deep navy on cream (greater than 12:1). Cream on navy is greater than 12:1. Copper is paired with labels and an intent marker, never used alone. The design is intentionally single-mode: cream paper on a navy dispatch desk is the product identity, and painting the background explicitly prevents an accidental system theme.
 
+Keyboard focus uses two painted rails: dark teal against paper or mustard, plus cream against the navy desk. Each band is 3 px; the visible band reaches at least 3:1 on its adjacent surface. This is deliberately separate from the ordinary navy control borders, so focus is evident on the static 404 recovery link too.
+
 ## Type and spacing
 
 - IBM Plex Sans Variable, self-hosted by the build, is used for controls and reading text.

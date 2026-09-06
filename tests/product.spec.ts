@@ -1,5 +1,66 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test, type Locator } from '@playwright/test';
+
+async function focusIndicatorContrast(locator: Locator) {
+  await locator.focus();
+  return locator.evaluate((element: HTMLElement) => {
+    const parseColor = (value: string) => {
+      const match = value.match(/rgba?\(([^)]+)\)/);
+      if (!match) return null;
+      const [red, green, blue, alpha = '1'] = match[1].split(',').map((part) => part.trim());
+      return [Number(red), Number(green), Number(blue), Number(alpha)] as const;
+    };
+    const luminance = ([red, green, blue]: readonly number[]) => {
+      const channels = [red, green, blue].map((channel) => {
+        const normalized = channel / 255;
+        return normalized <= 0.04045 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
+      });
+      return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+    };
+    const contrast = (first: readonly number[], second: readonly number[]) => {
+      const [lighter, darker] = [luminance(first), luminance(second)].sort((a, b) => b - a);
+      return (lighter + 0.05) / (darker + 0.05);
+    };
+    const opaqueBackground = () => {
+      let parent = element.parentElement;
+      while (parent) {
+        const color = parseColor(getComputedStyle(parent).backgroundColor);
+        if (color && color[3] > 0) return color;
+        parent = parent.parentElement;
+      }
+      return parseColor(getComputedStyle(document.body).backgroundColor)!;
+    };
+
+    const style = getComputedStyle(element);
+    const background = opaqueBackground();
+    const indicatorColors = [style.outlineColor, ...(style.boxShadow.match(/rgba?\([^)]+\)/g) ?? [])]
+      .map(parseColor)
+      .filter((color): color is readonly [number, number, number, number] => Boolean(color && color[3] > 0));
+
+    return {
+      focusVisible: element.matches(':focus-visible'),
+      bandWidth: Math.max(Number.parseFloat(style.outlineWidth) || 0, Number.parseFloat(style.boxShadow.split(' ').at(-1) ?? '') || 0),
+      bestContrast: Math.max(...indicatorColors.map((color) => contrast(color, background))),
+    };
+  });
+}
+
+test('@a11y keyboard focus has a 3:1 visible band on paper, navy, and the HTTP 404', async ({ page }) => {
+  await page.goto('/privacy');
+  const paper = await focusIndicatorContrast(page.getByRole('link', { name: 'privacy@sociobot.in' }));
+
+  await page.goto('/');
+  const navy = await focusIndicatorContrast(page.getByRole('link', { name: 'Patient Rail' }));
+
+  await page.goto('/404.html');
+  const notFound = await focusIndicatorContrast(page.getByRole('link', { name: 'Open today’s run' }));
+
+  for (const result of [paper, navy, notFound]) {
+    expect(result.focusVisible).toBe(true);
+    expect(result.bandWidth).toBeGreaterThanOrEqual(3);
+    expect(result.bestContrast).toBeGreaterThanOrEqual(3);
+  }
+});
 
 test('@claim:invalid-no-turn invalid empty and full-car actions do not spend a turn', async ({ page }) => {
   await page.goto('/demo');

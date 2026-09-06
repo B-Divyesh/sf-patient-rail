@@ -40,6 +40,7 @@ a {
 }
 
 a:focus-visible {
-  outline: 4px solid #fff7df;
-  outline-offset: 4px;
+  outline: 3px solid #fff7df;
+  outline-offset: 5px;
+  box-shadow: 0 0 0 3px #075f5b;
 }

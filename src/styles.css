@@ -58,8 +58,10 @@ a:hover { text-decoration-thickness: 0.16em; }
 button:not(:disabled), a { cursor: pointer; }
 
 :focus-visible {
-  outline: 4px solid var(--mustard);
-  outline-offset: 4px;
+  /* The two rails keep one high-contrast focus band visible on either paper or the navy desk. */
+  outline: 3px solid var(--cream);
+  outline-offset: 5px;
+  box-shadow: 0 0 0 3px var(--teal-dark);
 }
 
 .sr-only {
