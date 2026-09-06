@@ -1,5 +1,21 @@
 # Patient Rail handoff
 
+## Independent verification 6 — PASS
+
+Independent QA on 6 September 2026 reviewed candidate `d8ddaf502e55581ed69ed05767632270a1cf1499` and documentation baseline `e91e5de8806c220f9b356a6b5e4237ec94df9ebd`. The candidate changes claim coverage for both board settings; the last shipped product-source change remains `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8`. Live JavaScript and CSS hashes exactly matched the clean build.
+
+A fresh clone passed `npm ci`, `npm test` (7 engine and 27 Chromium tests), every one of the 12 claim commands run separately, and `npm run build`. The full 7-engine/27-browser suite also passed against production HTTPS. The repaired `settings-persist` claim visibly checks both settings before and after reload and confirms both reopened controls.
+
+Fresh desktop and phone contexts showed the job, audience, sample action, first action, and active board before scrolling. One click opened the isolated populated sample. Reset and exit preserved a daily sentinel. The sample won after 15 Fire actions, lost after 11 Hold position actions, and restarted at turn 1 with full cars.
+
+All earlier 404 CSP, phone viewport, exhaustive seed, touch-target, landmark, duration-copy, keyboard-label, focus-contrast, and settings-coverage findings remain closed. Live axe checks found zero violations across all application routes. Keyboard, dialog focus, 200% text, reduced motion, offline reload, privacy requests, internal links, titles, legal pages, purchase-return boundary, and the deliberate 404 passed.
+
+Fresh live mobile Lighthouse scored 100 performance, 100 accessibility, 100 best practices, and 100 SEO. LCP was 1.201 seconds, total blocking time 0 ms, CLS 0.049, and transfer size 84.5 KB. A phone frame sample averaged 59.9 fps; no frame-rate claim is public.
+
+The complete report is `.factory/verification-6.md`; evidence is under `.factory/evidence/verification-6/`. There are zero findings and zero untested claims. Verdict: **PASS**.
+
+The disclosed dependency is unchanged: the US$8 archive purchase remains disabled until billing registration and entitlement validation are available. The free daily game and sample are complete.
+
 ## Repair 5 — PASS
 
 Strict review 3 finding R3-1 is closed. The public settings claim and its single tagged browser test now cover both choices in the Board settings dialog: coordinate labels and the heavier enemy-intent outline. The test turns both options off, checks both rendered changes immediately, reloads, checks both rendered changes again, then reopens the dialog and confirms both controls remain off. It verifies browser-visible outcomes rather than source strings or only stored data.
