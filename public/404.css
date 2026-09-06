@@ -1,0 +1,45 @@
+:root {
+  color: #071d2e;
+  background: #102a43;
+  font-family: system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+}
+
+.ticket {
+  max-width: 620px;
+  padding: clamp(32px, 7vw, 72px);
+  background: #fff7df;
+  border: 4px solid #071d2e;
+  box-shadow: 14px 14px 0 #147d78;
+  clip-path: polygon(0 0, 96% 1%, 100% 94%, 94% 100%, 2% 98%);
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+a {
+  min-height: 48px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  color: #071d2e;
+  background: #e3ac28;
+  border: 3px solid #071d2e;
+  font-weight: 700;
+}
+
+a:focus-visible {
+  outline: 4px solid #fff7df;
+  outline-offset: 4px;
+}

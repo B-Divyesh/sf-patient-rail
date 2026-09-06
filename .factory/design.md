@@ -51,4 +51,6 @@ No gameplay rule depends on animation. Buttons press by 1 px and paper layers se
 
 ## Difficulty curve
 
-Each run has three five-turn stops. Stop one teaches firing and bracing with copper beetles. Stop two adds tougher track cutters or storm crows. Stop three applies one visible weather rule. Each turn resolves exactly one announced enemy intent. Firing on the shown enemy provides a safe route through every generated seed. Three Brace tokens can cancel up to two damage when the player chooses another action. The automated finishability check plays 366 dated seeds through a winning end state.
+Each run has three five-turn stops. Stop one teaches firing and bracing with copper beetles. Stop two adds tougher track cutters or storm crows. Stop three applies one visible weather rule. Each turn resolves exactly one announced enemy intent. Firing on the shown enemy provides a safe route through every generated seed. Three Brace tokens can cancel up to two damage when the player chooses another action.
+
+The dated-seed generator can change only three tactical rule groups: one of six car orders, one of six enemy-family orders, and one of three weather rules. Route names vary too, but never affect a turn. The finishability check plays the safe Fire route through all 108 possible tactical configurations and requires a 15-turn win with every car above zero integrity. This proves the safe route for every dated seed instead of sampling calendar dates.

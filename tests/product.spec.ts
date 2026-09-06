@@ -55,8 +55,45 @@ test('phone layout shows job, action, and usable game without body overflow', as
   await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
   const size = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
   expect(size.scroll).toBe(size.client);
-  const cell = await page.locator('[data-cell]').first().boundingBox();
-  expect(cell?.height).toBeGreaterThanOrEqual(44);
+  const intent = page.locator('[data-cell].is-intent');
+  const viewport = await page.evaluate(() => ({ height: window.innerHeight, scrollY: window.scrollY }));
+  const intentBox = await intent.boundingBox();
+  expect(intentBox?.height).toBeGreaterThanOrEqual(44);
+  expect(intentBox?.y).toBeGreaterThanOrEqual(0);
+  expect((intentBox?.y ?? Infinity) + (intentBox?.height ?? Infinity)).toBeLessThanOrEqual(viewport.height);
+  await intent.click();
+  await expect(page.locator('[data-turn]')).toHaveText('2');
+  expect(await page.evaluate(() => window.scrollY)).toBe(viewport.scrollY);
+});
+
+test('designed 404 loads its same-origin stylesheet under the production CSP', async ({ page }) => {
+  const [htmlResponse, configResponse] = await Promise.all([
+    page.request.get('/404.html'),
+    page.request.get('/staticwebapp.config.json'),
+  ]);
+  expect(htmlResponse.ok()).toBe(true);
+  expect(configResponse.ok()).toBe(true);
+  const html = await htmlResponse.text();
+  const config = await configResponse.json() as { globalHeaders: { 'Content-Security-Policy': string } };
+  const errors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') errors.push(message.text());
+  });
+  await page.route('**/404-csp-check', async (route) => {
+    await route.fulfill({
+      status: 404,
+      contentType: 'text/html',
+      headers: { 'Content-Security-Policy': config.globalHeaders['Content-Security-Policy'] },
+      body: html,
+    });
+  });
+
+  const response = await page.goto('/404-csp-check');
+  await expect(page.locator('.ticket')).toBeVisible();
+  expect(response?.status()).toBe(404);
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(16, 42, 67)');
+  await expect(page.locator('.ticket')).toHaveCSS('background-color', 'rgb(255, 247, 223)');
+  expect(errors.filter((message) => message.includes('Content Security Policy'))).toEqual([]);
 });
 
 for (const path of ['/', '/demo', '/how-to-play', '/archive', '/license', '/privacy', '/terms']) {

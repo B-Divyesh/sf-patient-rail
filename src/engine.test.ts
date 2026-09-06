@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applyAction, configForSeed, createRun, playSafeRun } from './engine';
+import { allDatedSeedConfigurations, applyAction, configForSeed, createRun, playSafeConfiguration, playSafeRun } from './engine';
 
 describe('deterministic run engine', () => {
   it('builds the same game from the same seed', () => {
@@ -47,5 +47,17 @@ describe('deterministic run engine', () => {
     expect(state.stopIndex).toBe(2);
     expect(state.totalTurns).toBe(15);
     expect(state.cars.every((car) => car.hp > 0)).toBe(true);
+  });
+
+  it('finds a winning route in every possible dated-seed game configuration', () => {
+    const configurations = allDatedSeedConfigurations();
+
+    expect(configurations).toHaveLength(108);
+    for (const config of configurations) {
+      const state = playSafeConfiguration(config);
+      expect(state.status).toBe('won');
+      expect(state.totalTurns).toBe(15);
+      expect(state.cars.every((car) => car.hp > 0)).toBe(true);
+    }
   });
 });

@@ -18,7 +18,7 @@
     "claim": "Every dated seed has a safe route through three stops.",
     "where": "How it works, README",
     "test": "npm test -- --grep @claim:finishable-seeds",
-    "sandbox": "deterministic engine; play Brace for 366 dated seeds and require a win for each"
+    "sandbox": "deterministic engine; play the safe Fire route for all 108 possible car-order, enemy-family-order, and weather configurations that a dated seed can select"
   },
   {
     "id": "demo-isolation",

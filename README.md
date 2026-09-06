@@ -16,7 +16,7 @@ Sample: <https://patient-rail.sociobot.in/demo>
 - A fixed sample stored separately from daily progress.
 - A win screen, loss screen, and one-action restart.
 
-A full run is 15 turns and is intended to take about 20 minutes when decisions are considered. The automated finishability check plays 366 dated seeds to a win by firing on the shown intent. It does not assert that every possible player choice wins.
+A full run is 15 turns and is intended to take about 20 minutes when decisions are considered. The automated finishability check plays the safe Fire route through all 108 possible tactical configurations. A date selects one of six car orders, six enemy-family orders, and three weather rules. Route names do not affect a turn. It does not assert that every possible player choice wins.
 
 ## Offline archive offer
 

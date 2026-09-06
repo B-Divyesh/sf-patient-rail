@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { configForSeed, playSafeRun } from '../src/engine';
+import { allDatedSeedConfigurations, configForSeed, playSafeConfiguration } from '../src/engine';
 
 test('@claim:complete-seeded-run sample reaches a three-stop win', async ({ page }) => {
   await page.goto('/demo');
@@ -27,16 +27,14 @@ test('@claim:loss-restart loss ends and restart restores the opening state', asy
   await expect(page.getByText('5 / 5')).toHaveCount(3);
 });
 
-test('@claim:finishable-seeds 366 dated seeds reach a win', async () => {
-  const start = new Date('2028-01-01T00:00:00Z');
-  for (let offset = 0; offset < 366; offset += 1) {
-    const date = new Date(start);
-    date.setUTCDate(start.getUTCDate() + offset);
-    const seed = `PR-${date.toISOString().slice(0, 10)}`;
-    const result = playSafeRun(seed);
-    expect(result.status, seed).toBe('won');
-    expect(result.totalTurns, seed).toBe(15);
-    expect(result.cars.every((car) => car.hp > 0), seed).toBe(true);
+test('@claim:finishable-seeds every dated-seed game configuration reaches a win', async () => {
+  const configurations = allDatedSeedConfigurations();
+  expect(configurations).toHaveLength(108);
+  for (const config of configurations) {
+    const result = playSafeConfiguration(config);
+    expect(result.status, config.seed).toBe('won');
+    expect(result.totalTurns, config.seed).toBe(15);
+    expect(result.cars.every((car) => car.hp > 0), config.seed).toBe(true);
   }
 });
 

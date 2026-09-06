@@ -120,6 +120,10 @@ const ROUTE_NAMES = [
   'Willow Platform',
 ];
 
+const CAR_KINDS: readonly CarKind[] = ['engine', 'workshop', 'cargo'];
+const FAMILY_IDS: readonly FamilyId[] = ['copper-beetles', 'track-cutters', 'storm-crows'];
+const WEATHER_IDS: readonly WeatherId[] = ['headwind', 'heavy-rain', 'hard-frost'];
+
 function hashString(value: string): number {
   let hash = 2166136261;
   for (let index = 0; index < value.length; index += 1) {
@@ -149,6 +153,12 @@ function shuffled<T>(values: readonly T[], random: () => number): T[] {
   return output;
 }
 
+function permutations<T>(values: readonly T[]): T[][] {
+  if (values.length <= 1) return [Array.from(values)];
+  return values.flatMap((value, index) => permutations(values.filter((_candidate, candidateIndex) => candidateIndex !== index))
+    .map((remaining) => [value, ...remaining]));
+}
+
 export function dailySeed(date = new Date()): string {
   return `PR-${date.toISOString().slice(0, 10)}`;
 }
@@ -166,9 +176,9 @@ export function configForSeed(seed: string): RunConfig {
 
   const random = seededRandom(seed);
   const routes = shuffled(ROUTE_NAMES, random).slice(0, 3) as [string, string, string];
-  const cars = shuffled<CarKind>(['engine', 'workshop', 'cargo'], random) as [CarKind, CarKind, CarKind];
-  const familyPool = shuffled<FamilyId>(['copper-beetles', 'track-cutters', 'storm-crows'], random);
-  const weatherPool = shuffled<WeatherId>(['headwind', 'heavy-rain', 'hard-frost'], random);
+  const cars = shuffled(CAR_KINDS, random) as [CarKind, CarKind, CarKind];
+  const familyPool = shuffled(FAMILY_IDS, random);
+  const weatherPool = shuffled(WEATHER_IDS, random);
   return {
     seed,
     routeNames: routes,
@@ -176,6 +186,26 @@ export function configForSeed(seed: string): RunConfig {
     families: familyPool as [FamilyId, FamilyId, FamilyId],
     weather: weatherPool[0]!,
   };
+}
+
+/**
+ * Dates can change route labels too, but labels never affect a turn. These are
+ * the complete finite set of car, enemy-family and weather configurations a
+ * dated seed can select. Keeping the domain explicit makes the finishability
+ * check a proof over game rules rather than a sample of calendar dates.
+ */
+export function allDatedSeedConfigurations(): RunConfig[] {
+  const carOrders = permutations(CAR_KINDS) as [CarKind, CarKind, CarKind][];
+  const familyOrders = permutations(FAMILY_IDS) as [FamilyId, FamilyId, FamilyId][];
+  const routeNames = ROUTE_NAMES.slice(0, STOP_COUNT) as [string, string, string];
+
+  return carOrders.flatMap((carOrder) => familyOrders.flatMap((families) => WEATHER_IDS.map((weather) => ({
+    seed: `PROOF-${carOrder.join('-')}-${families.join('-')}-${weather}`,
+    routeNames,
+    carOrder,
+    families,
+    weather,
+  }))));
 }
 
 function buildCars(config: RunConfig): Car[] {
@@ -260,8 +290,7 @@ function computeIntent(state: RunState): Intent {
   };
 }
 
-export function createRun(seed: string, now = Date.now()): RunState {
-  const config = configForSeed(seed);
+export function createRunForConfig(config: RunConfig, now = Date.now()): RunState {
   const cars = buildCars(config);
   const state = {
     version: 1 as const,
@@ -281,6 +310,10 @@ export function createRun(seed: string, now = Date.now()): RunState {
   };
   state.intent = computeIntent(state);
   return state;
+}
+
+export function createRun(seed: string, now = Date.now()): RunState {
+  return createRunForConfig(configForSeed(seed), now);
 }
 
 function cloneState(state: RunState): RunState {
@@ -417,12 +450,16 @@ export function isRunState(value: unknown, seed: string): value is RunState {
     && typeof candidate.totalTurns === 'number';
 }
 
-export function playSafeRun(seed: string): RunState {
-  let state = createRun(seed, 0);
+export function playSafeConfiguration(config: RunConfig): RunState {
+  let state = createRunForConfig(config, 0);
   while (state.status === 'playing') {
     const result = applyAction(state, { type: 'fire', enemyId: state.intent.enemyId });
-    if (!result.valid) throw new Error(`Safe action failed for ${seed}: ${result.message}`);
+    if (!result.valid) throw new Error(`Safe action failed for ${config.seed}: ${result.message}`);
     state = result.state;
   }
   return state;
+}
+
+export function playSafeRun(seed: string): RunState {
+  return playSafeConfiguration(configForSeed(seed));
 }
