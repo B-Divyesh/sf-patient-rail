@@ -1,5 +1,13 @@
 # Patient Rail handoff
 
+## Strict review 3 — FAIL
+
+Strict QA on 6 September 2026 reviewed implementation `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8` and documentation `2851d520f0260acb5c38c9bdfae4f1338821b345`. The live CSS and JavaScript hashes exactly matched a clean production build. A clean clone passed `npm ci`, `npm test` (7 engine and 27 browser tests), every one of the 12 declared claim commands run separately, and `npm run build`; the same complete suite passed against live HTTPS.
+
+The live phone and desktop game appeared in the first viewport. The fixed sample won after 15 shown-intent Fire actions, lost after 11 Hold position actions, and restarted correctly. Reset isolation, offline reload, daily recovery, privacy requests, routes, legal pages, deliberate 404, keyboard, focus, touch targets, reduced motion, and axe checks passed. All earlier findings remain closed.
+
+One medium claims-coverage finding prevents PASS: the settings dialog says both its coordinate and heavier intent-outline settings are saved in the browser, but the only `settings-persist` claim test verifies coordinates alone. A fresh live manual check showed the untested outline preference does persist, but the published broader claim is still incomplete under the claims contract. Add it to the tagged test or narrow the UI statement, then rerun the claim suite and strict review. Full evidence and the unambiguous verdict are in `.factory/review-3.md`.
+
 ## Strict review 2 — PASS
 
 Strict QA on 6 September 2026 reviewed implementation `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8` from documentation starting point `a4860db80f9b16048d290fbce016c17138090e09`. Later commits before this review changed only `.factory` reports and evidence. Live JavaScript and CSS hashes exactly matched the clean implementation build.
