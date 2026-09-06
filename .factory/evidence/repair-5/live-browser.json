@@ -1,0 +1,53 @@
+{
+  "desktop": {
+    "title": "Patient Rail — turn-based train defense",
+    "scrollY": 0,
+    "headline": "Defend a train, one turn at a time",
+    "audience": "For roguelike players who want a readable 15-turn daily run without real-time combat.",
+    "sampleActionVisible": true,
+    "intentBox": {
+      "x": 644.640625,
+      "y": 543.34375,
+      "width": 75.71875,
+      "height": 75.71875
+    },
+    "viewport": {
+      "width": 1440,
+      "height": 950
+    },
+    "horizontalOverflow": false
+  },
+  "phone": {
+    "title": "Patient Rail — turn-based train defense",
+    "scrollY": 0,
+    "headline": "Defend a train, one turn at a time",
+    "audience": "For roguelike players who want a readable 15-turn daily run without real-time combat.",
+    "sampleActionVisible": true,
+    "intentBox": {
+      "x": 126,
+      "y": 752.59375,
+      "width": 44,
+      "height": 44
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "horizontalOverflow": false
+  },
+  "reset": {
+    "demoLabel": "Demo — sample run, nothing is saved to your daily game",
+    "seed": "SAMPLE-EMBER-7",
+    "turn": "1",
+    "dailySentinel": "{\"daily\":\"unchanged\"}"
+  },
+  "win": {
+    "heading": "Route complete",
+    "summary": "Threats cleared\n10\nTurns used\n15\nBrake tokens\n3"
+  },
+  "loss": {
+    "heading": "Train stopped",
+    "summary": "Threats cleared\n0\nTurns used\n11\nBrake tokens\n3"
+  },
+  "errors": []
+}

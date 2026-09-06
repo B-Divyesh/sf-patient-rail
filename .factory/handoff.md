@@ -1,5 +1,45 @@
 # Patient Rail handoff
 
+## Repair 5 — PASS
+
+Strict review 3 finding R3-1 is closed. The public settings claim and its single tagged browser test now cover both choices in the Board settings dialog: coordinate labels and the heavier enemy-intent outline. The test turns both options off, checks both rendered changes immediately, reloads, checks both rendered changes again, then reopens the dialog and confirms both controls remain off. It verifies browser-visible outcomes rather than source strings or only stored data.
+
+The repair/claim commit is `d8ddaf502e55581ed69ed05767632270a1cf1499`. The production application source is still implementation `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8`; this repair changes test and claim coverage, so the shipped JavaScript and CSS are intentionally byte-for-byte unchanged. The repaired claim commit is pushed to `main`, and its clean `dist/` was deployed to the existing `sf-patient-rail` production static app without changing DNS or other infrastructure.
+
+### Verification
+
+- A fresh clone of `d8ddaf5` completed `npm ci` with zero vulnerabilities, passed `npm test` with 7 engine tests and 27 Chromium tests, and produced `dist/` with `npm run build`.
+- Every one of the 12 commands in `.factory/claims.json` was then run as a separate process from that fresh clone and passed. Each claim ID still has exactly one matching tag.
+- The broadened `settings-persist` claim passed locally, from the fresh clone, and against production HTTPS. It covers both settings and their rendered outcomes after reload.
+- `PATIENT_RAIL_URL=https://patient-rail.sociobot.in npm test` passed all 7 engine and 27 browser tests. The route-wide Playwright axe integration reported zero violations.
+- The factory URL verifier returned 200, found the correct title and language, one `h1`, one `main`, no missing alternatives, no unlabeled buttons, and no console errors.
+- Fresh 1440 × 950 and 390 × 844 browser contexts started at scroll position zero and showed the job, audience, sample action, first action, and active board. The phone intent cell was fully visible at 44 × 44 px with no horizontal overflow.
+- One-click sample entry showed the persistent sample label. Reset restored turn 1 and `SAMPLE-EMBER-7` while a seeded daily-storage value remained unchanged.
+- The live sample reached **Route complete** after 15 shown-intent Fire actions and **Train stopped** after 11 Hold position actions. Restart behavior remains covered by the live suite.
+- Fresh live mobile Lighthouse scored 100 performance, 100 accessibility, 100 best practices, and 100 SEO. LCP was 1.2 seconds, total blocking time 20 ms, CLS 0.049, and transferred content was 83 KiB.
+- Live JavaScript SHA-256 is `7dbe137f2d97b069230fd906dd12e5b62776599b4be73d397c4f859a89447a8a`; live CSS SHA-256 is `b2c9f7dc48d5766d628baec506d4a2a4ea9cba6d7e552d6e6306b54d7701390a`. Both match the clean local build.
+- `/`, `/demo`, `/how-to-play`, `/archive`, `/license`, `/privacy`, `/terms`, `robots.txt`, and `sitemap.xml` returned 200. `/404` returned its deliberate 404. Required security headers remain present.
+
+Fresh evidence is under `.factory/evidence/repair-5/`. All earlier CSP, phone viewport, exhaustive seed, touch-target, landmark, copy, keyboard-label, and focus-contrast findings remain closed through the complete regression suite.
+
+### Known dependency
+
+The free daily game and sample are complete. The US$8 one-time offline/archive offer remains unavailable until the separate billing operator registers it and entitlement validation is implemented. Purchase stays disabled and makes no billing request. Public metadata remains in `.factory/billing-offer.json`.
+
+### How to verify
+
+```sh
+npm ci
+npm test
+npm run build
+```
+
+Run each command in `.factory/claims.json` separately. To repeat the production browser suite:
+
+```sh
+PATIENT_RAIL_URL=https://patient-rail.sociobot.in npm test
+```
+
 ## Strict review 3 — FAIL
 
 Strict QA on 6 September 2026 reviewed implementation `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8` and documentation `2851d520f0260acb5c38c9bdfae4f1338821b345`. The live CSS and JavaScript hashes exactly matched a clean production build. A clean clone passed `npm ci`, `npm test` (7 engine and 27 browser tests), every one of the 12 declared claim commands run separately, and `npm run build`; the same complete suite passed against live HTTPS.
