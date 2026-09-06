@@ -1,5 +1,13 @@
 # Patient Rail handoff
 
+## Independent verification 4 — PASS
+
+Independent QA on 6 September 2026 reviewed implementation `09ec2c2f36dfd0951508dcc0957568973044726b` and documentation `6a3f5ff6c77205dcf225765277072f6729344091`. The live JS and CSS hashes exactly matched a clean implementation build. A separate clean clone passed `npm ci`, `npm test` (7 engine and 26 browser tests), every one of the 12 declared claim commands, and `npm run build`.
+
+Fresh desktop and 390 × 844 phone browsers showed the job, audience, first action, and playable board without scrolling. The fixed sample won in 15 Fire actions and lost in 11 Hold actions; the persistent demo label, reset isolation, restart, invalid-action recovery, daily reload recovery, keyboard controls, reduced motion, settings focus return, offline reload, all 49 spoken cell labels, and all named routes were checked live. Axe found zero violations on the seven application routes. Fresh Lighthouse mobile scored 100 performance, 100 accessibility, 100 best practices, and 100 SEO (LCP 1.204 s, TBT 19 ms, CLS 0.049). The only remaining external dependency is the disclosed billing offer registration and entitlement validation; purchase remains disabled and sends no billing request.
+
+Full evidence and the unambiguous result are in `.factory/verification-4.md`.
+
 ## Repair 3 result
 
 All three findings from `.factory/verification-3.md` are repaired. The shipped implementation is `09ec2c2f36dfd0951508dcc0957568973044726b`. It is pushed to `main` and deployed at <https://patient-rail.sociobot.in>.
