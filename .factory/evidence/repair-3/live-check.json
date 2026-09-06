@@ -1,0 +1,61 @@
+{
+  "implementation": "09ec2c2f36dfd0951508dcc0957568973044726b",
+  "origin": "https://patient-rail.sociobot.in",
+  "assets": [
+    {
+      "path": "/assets/index-BWVYWaa7.js",
+      "sha256": "090263dc0a898138cbab8f4fd6fc5ed9db7a164d2f90b47a2ea7fcfe2e97ac3c",
+      "matches_dist": true
+    },
+    {
+      "path": "/assets/index-DFZqiF_p.css",
+      "sha256": "09e267c81239c9974c7e0bc32589242434f7b3994840282ab9634f31fea64cf3",
+      "matches_dist": true
+    }
+  ],
+  "route_statuses": {
+    "/": 200,
+    "/demo": 200,
+    "/how-to-play": 200,
+    "/archive": 200,
+    "/license": 200,
+    "/privacy": 200,
+    "/terms": 200,
+    "/robots.txt": 200,
+    "/sitemap.xml": 200,
+    "/manifest.webmanifest": 200,
+    "/social-card.png": 200,
+    "/404": 404
+  },
+  "first_view": {
+    "viewports": [
+      { "width": 390, "height": 844 },
+      { "width": 1440, "height": 950 }
+    ],
+    "scroll_y": 0,
+    "fully_visible": [
+      "job headline",
+      "audience sentence",
+      "sample action",
+      "first-action instruction",
+      "active intent cell"
+    ]
+  },
+  "demo_reset": {
+    "seed": "SAMPLE-EMBER-7",
+    "turn_after_reset": 1,
+    "banner_visible_after_play": true,
+    "daily_sentinel_unchanged": true
+  },
+  "sample_outcomes": {
+    "win": { "strategy": "Fire on shown intent", "actions": 15, "heading": "Route complete" },
+    "loss": { "strategy": "Hold position", "actions": 11, "heading": "Train stopped" }
+  },
+  "frame_sample": {
+    "viewport": { "width": 390, "height": 844 },
+    "frames": 182,
+    "elapsed_ms": 3001.5,
+    "average_fps": 60.3,
+    "maximum_interval_ms": 16.8
+  }
+}
