@@ -1,0 +1,73 @@
+{
+  "text200": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "h1Visible": true,
+    "boardVisible": true
+  },
+  "dialog": {
+    "open": true,
+    "initialFocus": "Close board settings",
+    "labels": [
+      " Show cell coordinates",
+      " Use a heavier intent outline"
+    ],
+    "returnedToTrigger": true,
+    "focusSequence": [
+      {
+        "tag": "BUTTON",
+        "name": "Close board settings",
+        "insideDialog": true,
+        "backgroundInteractive": false
+      },
+      {
+        "tag": "INPUT",
+        "name": "",
+        "insideDialog": true,
+        "backgroundInteractive": false
+      },
+      {
+        "tag": "INPUT",
+        "name": "",
+        "insideDialog": true,
+        "backgroundInteractive": false
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Save and close",
+        "insideDialog": true,
+        "backgroundInteractive": false
+      },
+      {
+        "tag": "BODY",
+        "name": "Skip to main content Patient Rai",
+        "insideDialog": false,
+        "backgroundInteractive": false
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Close board settings",
+        "insideDialog": true,
+        "backgroundInteractive": false
+      }
+    ],
+    "backgroundInteractiveFocused": false,
+    "nextTabReturnsToDialog": true
+  },
+  "exitDemo": {
+    "demoKey": null,
+    "dailySentinel": "{\"untouched\":true}"
+  },
+  "purchaseReturn": {
+    "title": "Archive activation — Patient Rail",
+    "heading": "Check archive activation",
+    "pending": true,
+    "billingRequests": []
+  },
+  "frames": {
+    "frames": 181,
+    "duration": 2999.8,
+    "fps": 60.00400026668444,
+    "maxGap": 16.800000000000182
+  }
+}

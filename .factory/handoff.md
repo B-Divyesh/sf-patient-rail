@@ -1,5 +1,19 @@
 # Patient Rail handoff
 
+## Strict review 2 — PASS
+
+Strict QA on 6 September 2026 reviewed implementation `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8` from documentation starting point `a4860db80f9b16048d290fbce016c17138090e09`. Later commits before this review changed only `.factory` reports and evidence. Live JavaScript and CSS hashes exactly matched the clean implementation build.
+
+The assigned clean checkout passed `npm ci`, `npm test` (7 engine and 27 browser tests), all 12 declared claim commands run separately, and `npm run build`. The same complete suite passed against live HTTPS. Fresh Lighthouse mobile scored 100 performance, 100 accessibility, 100 best practices, and 100 SEO; LCP was 1.352 s, total blocking time 18 ms, CLS 0.049, and transfer size 84.5 KB.
+
+Fresh 1440 × 950 and 390 × 844 contexts showed the job, audience, sample action, first action, and active board before scrolling. One click opened the isolated populated sample. Reset and leaving demo mode preserved seeded daily data. The sample won after 15 Fire actions, lost after 11 Hold position actions, and restarted at turn 1 with all cars full.
+
+All earlier findings remain closed. Axe found zero violations on all seven application routes. Keyboard play, 49 spoken cell labels, focus contrast, modal focus management, touch targets, reduced motion, 200% text, offline reload, route titles, links, legal pages, privacy requests, invalid actions, damaged-state recovery, the deliberate 404, and the untrusted purchase-return boundary passed.
+
+The complete report is `.factory/review-2.md`; fresh evidence is under `.factory/evidence/review-2/`. There are zero findings and zero untested claims. Verdict: **PASS**.
+
+The disclosed dependency is unchanged: the US$8 archive purchase remains disabled until billing registration and entitlement validation are available. The free daily game and sample are complete.
+
 ## Independent verification 5 — PASS
 
 Independent QA on 6 September 2026 reviewed implementation `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8` and documentation baseline `619cb5f723cb47d7f4e0fefc717bf4322ef414c9`. The later commit changes only handoff and Lighthouse evidence. Live JavaScript and CSS hashes exactly matched a clean build of the implementation.

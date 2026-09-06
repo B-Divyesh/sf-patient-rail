@@ -1,0 +1,50 @@
+{
+  "desktop": {
+    "status": 200,
+    "title": "Patient Rail — turn-based train defense",
+    "h1": [
+      "Defend a train, one turn at a time"
+    ],
+    "main": 1,
+    "sampleVisible": true,
+    "boardVisible": true,
+    "scrollY": 0,
+    "viewport": {
+      "width": 1440,
+      "height": 950,
+      "scrollWidth": 1440
+    },
+    "intentBox": {
+      "x": 644.640625,
+      "y": 543.34375,
+      "width": 75.71875,
+      "height": 75.71875
+    },
+    "intentFullyVisible": true,
+    "errors": []
+  },
+  "phone": {
+    "status": 200,
+    "title": "Patient Rail — turn-based train defense",
+    "h1": [
+      "Defend a train, one turn at a time"
+    ],
+    "main": 1,
+    "sampleVisible": true,
+    "boardVisible": true,
+    "scrollY": 0,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390
+    },
+    "intentBox": {
+      "x": 126,
+      "y": 752.59375,
+      "width": 44,
+      "height": 44
+    },
+    "intentFullyVisible": true,
+    "errors": []
+  }
+}

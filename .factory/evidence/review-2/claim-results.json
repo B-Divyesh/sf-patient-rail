@@ -1,0 +1,74 @@
+[
+  {
+    "id": "complete-seeded-run",
+    "command": "npm test -- --grep @claim:complete-seeded-run",
+    "status": 0,
+    "durationMs": 8383
+  },
+  {
+    "id": "loss-restart",
+    "command": "npm test -- --grep @claim:loss-restart",
+    "status": 0,
+    "durationMs": 8339
+  },
+  {
+    "id": "finishable-seeds",
+    "command": "npm test -- --grep @claim:finishable-seeds",
+    "status": 0,
+    "durationMs": 7081
+  },
+  {
+    "id": "demo-isolation",
+    "command": "npm test -- --grep @claim:demo-isolation",
+    "status": 0,
+    "durationMs": 7634
+  },
+  {
+    "id": "local-privacy",
+    "command": "npm test -- --grep @claim:local-privacy",
+    "status": 0,
+    "durationMs": 7438
+  },
+  {
+    "id": "offline-reload",
+    "command": "npm test -- --grep @claim:offline-reload",
+    "status": 0,
+    "durationMs": 8248
+  },
+  {
+    "id": "keyboard-play",
+    "command": "npm test -- --grep @claim:keyboard-play",
+    "status": 0,
+    "durationMs": 11132
+  },
+  {
+    "id": "resume-progress",
+    "command": "npm test -- --grep @claim:resume-progress",
+    "status": 0,
+    "durationMs": 7760
+  },
+  {
+    "id": "settings-persist",
+    "command": "npm test -- --grep @claim:settings-persist",
+    "status": 0,
+    "durationMs": 7763
+  },
+  {
+    "id": "invalid-no-turn",
+    "command": "npm test -- --grep @claim:invalid-no-turn",
+    "status": 0,
+    "durationMs": 7556
+  },
+  {
+    "id": "seed-variation",
+    "command": "npm test -- --grep @claim:seed-variation",
+    "status": 0,
+    "durationMs": 6651
+  },
+  {
+    "id": "billing-pending",
+    "command": "npm test -- --grep @claim:billing-pending",
+    "status": 0,
+    "durationMs": 7172
+  }
+]

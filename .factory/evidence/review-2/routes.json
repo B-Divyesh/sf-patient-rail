@@ -1,0 +1,124 @@
+{
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "Patient Rail — turn-based train defense",
+      "h1": [
+        "Defend a train, one turn at a time"
+      ],
+      "main": 1,
+      "errors": []
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — Patient Rail",
+      "h1": [
+        "Defend a train, one turn at a time"
+      ],
+      "main": 1,
+      "errors": []
+    },
+    "/how-to-play": {
+      "status": 200,
+      "title": "How to play — Patient Rail",
+      "h1": [
+        "Learn the five-turn stop rules"
+      ],
+      "main": 1,
+      "errors": []
+    },
+    "/archive": {
+      "status": 200,
+      "title": "Offline archive — Patient Rail",
+      "h1": [
+        "Replay any dated route offline"
+      ],
+      "main": 1,
+      "errors": []
+    },
+    "/license": {
+      "status": 200,
+      "title": "Archive activation — Patient Rail",
+      "h1": [
+        "Check archive activation"
+      ],
+      "main": 1,
+      "errors": []
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — Patient Rail",
+      "h1": [
+        "See what stays in your browser"
+      ],
+      "main": 1,
+      "errors": []
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — Patient Rail",
+      "h1": [
+        "Read the play and purchase terms"
+      ],
+      "main": 1,
+      "errors": []
+    },
+    "/404": {
+      "status": 404,
+      "title": "Page not found — Patient Rail",
+      "h1": [
+        "This page is not on the route"
+      ],
+      "main": 1,
+      "recovery": "/",
+      "console": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ]
+    }
+  },
+  "links": {
+    "https://patient-rail.sociobot.in/#main": 200,
+    "https://patient-rail.sociobot.in/": 200,
+    "https://patient-rail.sociobot.in/demo": 200,
+    "https://patient-rail.sociobot.in/how-to-play": 200,
+    "https://patient-rail.sociobot.in/privacy": 200,
+    "https://patient-rail.sociobot.in/archive": 200,
+    "https://patient-rail.sociobot.in/terms": 200,
+    "https://sociobot.in/": 200
+  },
+  "headers": {
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "x-content-type-options": "nosniff",
+    "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; object-src 'none'",
+    "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+    "cross-origin-opener-policy": "same-origin"
+  },
+  "assets": {
+    "scripts": [
+      "https://patient-rail.sociobot.in/assets/index-Bp_fIoTF.js"
+    ],
+    "styles": [
+      "https://patient-rail.sociobot.in/assets/index-DPNArfel.css"
+    ]
+  },
+  "allRouteLinks": {
+    "https://patient-rail.sociobot.in/": 200,
+    "https://patient-rail.sociobot.in/#main": 200,
+    "https://patient-rail.sociobot.in/archive": 200,
+    "https://patient-rail.sociobot.in/archive#main": 200,
+    "https://patient-rail.sociobot.in/demo": 200,
+    "https://patient-rail.sociobot.in/demo#main": 200,
+    "https://patient-rail.sociobot.in/how-to-play": 200,
+    "https://patient-rail.sociobot.in/how-to-play#main": 200,
+    "https://patient-rail.sociobot.in/license": 200,
+    "https://patient-rail.sociobot.in/license#main": 200,
+    "https://patient-rail.sociobot.in/not-found-check#main": 200,
+    "https://patient-rail.sociobot.in/privacy": 200,
+    "https://patient-rail.sociobot.in/privacy#main": 200,
+    "https://patient-rail.sociobot.in/terms": 200,
+    "https://patient-rail.sociobot.in/terms#main": 200,
+    "https://sociobot.in/": 200,
+    "mailto:privacy@sociobot.in": "mailto",
+    "mailto:support@sociobot.in": "mailto"
+  }
+}

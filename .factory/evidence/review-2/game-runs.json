@@ -1,0 +1,34 @@
+{
+  "demo": {
+    "initial": {
+      "seed": "SAMPLE-EMBER-7",
+      "intent": "Copper beetle will attack Engine for 1. Brace would block 1.",
+      "cars": [
+        "Engine5 / 55 of 5Workshop car5 / 55 of 5Cargo car5 / 55 of 5"
+      ],
+      "stops": []
+    },
+    "label": true,
+    "turnAfterReset": "1",
+    "resetIntent": "Copper beetle will attack Engine for 1. Brace would block 1.",
+    "sentinel": "{\"untouched\":true}",
+    "keys": [
+      "demo:patient-rail:run:v1",
+      "patient-rail:daily:review-2-sentinel"
+    ]
+  },
+  "win": {
+    "heading": "Route complete",
+    "summary": "THREE STOPS COMPLETE | Route complete | You reached Summit Shed with 13 train integrity. | Threats cleared | 10 | Turns used | 15 | Brake tokens | 3 | Restart sample"
+  },
+  "loss": {
+    "actions": 11,
+    "heading": "Train stopped",
+    "summary": "STOPPED ON TURN 11 | Train stopped | A train car lost all integrity before the final stop. | Threats cleared | 0 | Turns used | 11 | Brake tokens | 3 | Restart sample",
+    "restart": {
+      "turn": "1",
+      "fullCars": 3,
+      "board": true
+    }
+  }
+}
