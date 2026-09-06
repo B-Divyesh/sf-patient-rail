@@ -1,0 +1,31 @@
+{
+  "slug": "patient-rail",
+  "title": "Patient Rail",
+  "territory": "games-creative",
+  "user": "Roguelike players who enjoy browser accessibility but want a thoughtful, turn-based 20-minute daily run instead of reflex-heavy 'ASCII plus deaths' play.",
+  "evidence": [
+    {
+      "url": "https://hn.algolia.com/api/v1/items/49473031",
+      "date": "2026-08-28",
+      "quote_or_summary": "A player argues that roguelikes need more than ASCII graphics and frequent death, and says the real-time, constantly messaging experience felt Flappy-Bird-like rather than contemplative."
+    },
+    {
+      "url": "https://wookinarium.itch.io/risk-of-train?password=wookamegabong",
+      "date": "2026-09-01",
+      "quote_or_summary": "The fetched itch.io page is the live Risk of Train browser-roguelike page attached to the HN discussion."
+    }
+  ],
+  "recurrence": "The feedback is a precise genre critique from an active player: browser roguelike availability is not enough if it loses deliberation and readable decision space.",
+  "current_workaround": "Play a desktop traditional roguelike, tolerate real-time browser action, or use a generic daily puzzle instead of a tactical run.",
+  "incumbents_and_gap": "Brogue and desktop roguelikes preserve thought but are less link-friendly; action browser roguelikes prioritize immediacy. A daily, turn-based micro-roguelike can serve the gap without attempting a full content universe.",
+  "smallest_useful_product": "A 20-minute daily train-defense run on a 7x7 grid: one action per turn, one visible enemy intent each turn, and three route stops. The daily seed changes car layouts, enemy families, and a final weather rule. Non-goals: real-time combat, procedural lore generation, account progression, or multiplayer.",
+  "success_measure": "Median time spent on a decision is above three seconds without a fall in completion rate below 35%, and 20% of players return for three daily seeds.",
+  "artifact_class": "browser-game",
+  "monetization": "one-time \u2014 a finite tactical game should ship complete; a free daily seed can lead to a paid offline/archive edition.",
+  "constraints": "All seeds must be solvable/finishable under defined rules; keyboard-first and screen-reader action labels; no copyrighted train/game-world assets.",
+  "est_build_effort": "M",
+  "scale": "small",
+  "why_distinct": "It treats contemplation, intent visibility, and a daily bounded run as the core experience rather than using roguelike aesthetics for an action game.",
+  "confidence": 4,
+  "state": "ADMITTED"
+}
