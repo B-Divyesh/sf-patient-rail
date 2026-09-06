@@ -1,5 +1,61 @@
 # Patient Rail handoff
 
+## Repair 4 — PASS
+
+The current implementation is `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8` (`fix: strengthen keyboard focus contrast`). It is pushed to `main` and deployed to <https://patient-rail.sociobot.in>. This repair touched only the existing `sf-patient-rail` static app.
+
+### What changed
+
+- Replaced the low-contrast mustard general focus outline with a two-band focus marker: a 3 px dark-teal rail and a 3 px cream rail. A dark-teal band clears 7.02:1 on cream paper and 3.65:1 beside mustard; the cream band clears 13.68:1 on the navy desk.
+- Applied the same treatment to the static HTTP 404 recovery link. Its new dark-teal rail clears 7.02:1 against the cream ticket.
+- Added an outcome-based browser regression that focuses real controls on cream paper, navy, and the static 404 document, reads their rendered focus bands and adjacent opaque surfaces, and requires a visible 3 px band with at least 3:1 contrast. It does not assert stylesheet text.
+- Recorded the focus treatment in the visual thesis.
+
+### Current verification
+
+From the documented clean setup (Node.js 22.23.2 and npm 10.9.8), `npm ci`, `npm test`, and `npm run build` passed. The full local result was 7 deterministic engine tests and 27 Chromium browser tests. All 12 commands in `.factory/claims.json` were then run separately and passed.
+
+The deployed HTTPS URL was checked in fresh browser contexts. `PATIENT_RAIL_URL=https://patient-rail.sociobot.in npm test` passed all 7 engine tests and 27 browser tests, including axe checks on `/`, `/demo`, `/how-to-play`, `/archive`, `/license`, `/privacy`, and `/terms`. The live static `/404` deliberately returned HTTP 404; it kept its same-origin stylesheet and recovery link.
+
+Fresh 1440 × 950 desktop and 390 × 844 phone captures show the job, audience, sample action, first action, and active board before scrolling. The live fixed sample won after 15 Fire actions and lost after 11 Hold position actions; current screenshots and the end-screen summaries are in `.factory/evidence/`.
+
+Fresh live mobile Lighthouse scores are 100 performance, 100 accessibility, 100 best practices, and 100 SEO. LCP was 1.2 s, total blocking time 50 ms, CLS 0.049, and transfer size 83 KiB. The report is `.factory/evidence/lighthouse-live-mobile-repair-4.json`.
+
+The deployed asset hashes match the clean local `dist/` build: JavaScript `7dbe137f2d97b069230fd906dd12e5b62776599b4be73d397c4f859a89447a8a` and CSS `b2c9f7dc48d5766d628baec506d4a2a4ea9cba6d7e552d6e6306b54d7701390a`.
+
+### Finding disposition
+
+| Finding | Status |
+| --- | --- |
+| R1-1: focus outline below 3:1 on cream and static 404 | Closed by the two-band treatment and live regression. |
+| V1-1: static 404 CSP error | Closed; the 404 stylesheet remains same-origin and the live CSP check passes. |
+| V1-2: phone did not show a usable board | Closed; the 390 px test keeps the active cell fully visible and usable without scrolling. |
+| V1-3: universal seed wording used a date sample | Closed; every one of 108 reachable tactical configurations wins through the tested safe route. |
+| V2-1: touch targets below 44 px | Closed; browser coverage checks all routes and settings controls. |
+| V3-1: nested complementary landmark | Closed; axe reports no violations on every application route. |
+| V3-2: untested 20-minute claim | Closed; public copy uses the tested 15-turn shape and says no timer sets duration. |
+| V3-3: incomplete keyboard and spoken-label proof | Closed; claim coverage includes Tab, four arrows, Enter, Space, B, W, focus recovery, and all 49 unique spoken labels. |
+
+### Known dependency
+
+The free daily game and sample are complete. The US$8 one-time offline/archive offer remains unavailable until the separate billing operator registers it and entitlement validation is implemented. Purchase stays disabled, activation does not assert ownership, and no billing request occurs. The public metadata is retained in `.factory/billing-offer.json` and copied to `/work/.evidence/billing-offer.json`.
+
+### How to verify
+
+```sh
+npm ci
+npm test
+npm run build
+```
+
+Run each command in `.factory/claims.json` separately. To run the browser suite against production:
+
+```sh
+PATIENT_RAIL_URL=https://patient-rail.sociobot.in npm test
+```
+
+The following historical reports are retained below for traceability. Their FAIL verdicts predate this repair; the table above gives their current dispositions.
+
 ## Review 1 — FAIL
 
 Fresh strict QA on 6 September 2026 reviewed implementation `09ec2c2f36dfd0951508dcc0957568973044726b`, documentation baseline `6a3f5ff6c77205dcf225765277072f6729344091`, and starting review commit `34ed638062a2d7b09e0730c20e81dd2b4d4d2181`.
