@@ -1,0 +1,236 @@
+{
+  "base": "https://patient-rail.sociobot.in",
+  "checkedAt": "2026-09-06T07:05:42.140Z",
+  "desktop": {
+    "status": 200,
+    "viewport": {
+      "width": 1440,
+      "height": 950
+    },
+    "scrollY": 0,
+    "title": "Patient Rail — turn-based train defense",
+    "h1": [
+      "Defend a train, one turn at a time"
+    ],
+    "jobVisible": true,
+    "audienceVisible": true,
+    "sampleVisible": true,
+    "firstActionVisible": true,
+    "boardVisible": true,
+    "intentBox": {
+      "x": 644.640625,
+      "y": 543.34375,
+      "width": 75.71875,
+      "height": 75.71875
+    },
+    "viewportFitsIntent": true,
+    "widths": {
+      "scroll": 1440,
+      "client": 1440
+    },
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  "phone": {
+    "status": 200,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "scrollY": 0,
+    "title": "Patient Rail — turn-based train defense",
+    "h1": [
+      "Defend a train, one turn at a time"
+    ],
+    "jobVisible": true,
+    "audienceVisible": true,
+    "sampleVisible": true,
+    "firstActionVisible": true,
+    "boardVisible": true,
+    "intentBox": {
+      "x": 126,
+      "y": 752.59375,
+      "width": 44,
+      "height": 44
+    },
+    "viewportFitsIntent": true,
+    "widths": {
+      "scroll": 390,
+      "client": 390
+    },
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  "demo": {
+    "populated": {
+      "url": "https://patient-rail.sociobot.in/demo",
+      "seed": "SAMPLE-EMBER-7",
+      "banner": true,
+      "stops": [
+        "1\nAlder Junction",
+        "2\nCopper Cut",
+        "3\nSummit Shed"
+      ],
+      "cars": [
+        "Engine\n5 / 5",
+        "Workshop car\n5 / 5",
+        "Cargo car\n5 / 5"
+      ],
+      "enemies": 5,
+      "intent": "Copper beetle will attack Engine for 1. Brace would block 1."
+    },
+    "bannerAfterAction": true,
+    "before": "{\"daily\":\"unchanged\"}",
+    "afterReset": {
+      "turn": "1",
+      "notice": "The sample was reset. Daily progress was not changed.",
+      "daily": "{\"daily\":\"unchanged\"}"
+    },
+    "afterExit": {
+      "daily": "{\"daily\":\"unchanged\"}",
+      "demo": null
+    },
+    "externalOrigins": [],
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  "win": {
+    "actions": 15,
+    "summary": "THREE STOPS COMPLETE\n\nRoute complete\n\nYou reached Summit Shed with 13 train integrity.\n\nThreats cleared\n10\nTurns used\n15\nBrake tokens\n3\nRestart sample",
+    "restart": {
+      "turn": "1",
+      "cars": [
+        "5 / 5",
+        "5 / 5",
+        "5 / 5"
+      ]
+    },
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  "loss": {
+    "actions": 11,
+    "summary": "STOPPED ON TURN 11\n\nTrain stopped\n\nA train car lost all integrity before the final stop.\n\nThreats cleared\n0\nTurns used\n11\nBrake tokens\n3\nRestart sample",
+    "restart": {
+      "turn": "1",
+      "cars": [
+        "5 / 5",
+        "5 / 5",
+        "5 / 5"
+      ]
+    },
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  "accessibility": {
+    "firstFocus": "Skip to main content",
+    "skipTarget": "H1:Defend a train, one turn at a time",
+    "dialogOpenFocus": "Close board settings",
+    "tabInsideDialog": true,
+    "returnedFocus": "Board settings",
+    "transitionDuration": "1e-05s",
+    "zoom": {
+      "scroll": 390,
+      "client": 390,
+      "h1": true,
+      "board": true
+    },
+    "consoleErrors": [],
+    "pageErrors": []
+  },
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "Patient Rail — turn-based train defense",
+      "h1": [
+        "Defend a train, one turn at a time"
+      ],
+      "h1Count": 1,
+      "mainCount": 1
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — Patient Rail",
+      "h1": [
+        "Defend a train, one turn at a time"
+      ],
+      "h1Count": 1,
+      "mainCount": 1
+    },
+    "/how-to-play": {
+      "status": 200,
+      "title": "How to play — Patient Rail",
+      "h1": [
+        "Learn the five-turn stop rules"
+      ],
+      "h1Count": 1,
+      "mainCount": 1
+    },
+    "/archive": {
+      "status": 200,
+      "title": "Offline archive — Patient Rail",
+      "h1": [
+        "Replay any dated route offline"
+      ],
+      "h1Count": 1,
+      "mainCount": 1
+    },
+    "/license": {
+      "status": 200,
+      "title": "Archive activation — Patient Rail",
+      "h1": [
+        "Check archive activation"
+      ],
+      "h1Count": 1,
+      "mainCount": 1
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — Patient Rail",
+      "h1": [
+        "See what stays in your browser"
+      ],
+      "h1Count": 1,
+      "mainCount": 1
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — Patient Rail",
+      "h1": [
+        "Read the play and purchase terms"
+      ],
+      "h1Count": 1,
+      "mainCount": 1
+    },
+    "/404": {
+      "status": 404,
+      "title": "Page not found — Patient Rail",
+      "h1": [
+        "This page is not on the route"
+      ],
+      "recovery": "/"
+    },
+    "/review-4-not-found": {
+      "status": 200,
+      "title": "Page not found — Patient Rail",
+      "h1": [
+        "This page is not on the route"
+      ],
+      "recovery": "/"
+    },
+    "/license?purchase=complete": {
+      "status": 200,
+      "warning": true
+    }
+  },
+  "routeConsoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "routePageErrors": [],
+  "performance": {
+    "frames": 182,
+    "elapsed": 3016.4379999999996,
+    "averageFps": 60.00454841107293,
+    "maxInterval": 16.800000000000182
+  }
+}

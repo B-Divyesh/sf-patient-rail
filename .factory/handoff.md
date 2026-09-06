@@ -1,5 +1,19 @@
 # Patient Rail handoff
 
+## Strict review 4 — PASS
+
+Strict review on 6 September 2026 reviewed implementation candidate `d8ddaf502e55581ed69ed05767632270a1cf1499` and documentation baseline `51c96b92886b5ff23778e1df915968cf0cf342a2`. The last shipped product-source change remains `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8`. Production JavaScript and CSS hashes exactly matched the clean build.
+
+A fresh clone passed `npm ci`, `npm test` (7 engine and 27 Chromium tests), each of the 12 claim commands run separately, `npm run build`, and the complete suite against live HTTPS. Fresh desktop and phone contexts showed the job, audience, first action, sample entry, and active board before scrolling.
+
+The isolated sample preserved a daily sentinel through play, reset, and exit. It won after 15 Fire actions, lost after 11 Hold position actions, and restarted both results at turn 1 with full cars. Invalid actions, damaged-state recovery, reload recovery, offline play, settings persistence, browser history, legal and not-found routes, reduced motion, keyboard labels, focus management, touch sizes, privacy requests, and the pending purchase boundary passed.
+
+All earlier findings remain closed, including the repaired two-setting claim coverage. Fresh live axe checks found zero violations on every application route. Lighthouse mobile scored 99 performance, 100 accessibility, 100 best practices, and 100 SEO; LCP was 1.277 seconds, TBT 105 ms, CLS 0.049, and transfer size 80.2 KB. A phone frame sample averaged 60.0 fps; no frame-rate claim is public.
+
+The complete report is `.factory/review-4.md`; fresh evidence is under `.factory/evidence/review-4/`. There are zero findings and zero untested claims. Verdict: **PASS**.
+
+The disclosed dependency is unchanged: the US$8 archive purchase remains disabled until billing registration and entitlement validation are available. The free daily game and sample are complete.
+
 ## Independent verification 6 — PASS
 
 Independent QA on 6 September 2026 reviewed candidate `d8ddaf502e55581ed69ed05767632270a1cf1499` and documentation baseline `e91e5de8806c220f9b356a6b5e4237ec94df9ebd`. The candidate changes claim coverage for both board settings; the last shipped product-source change remains `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8`. Live JavaScript and CSS hashes exactly matched the clean build.
