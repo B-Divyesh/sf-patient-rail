@@ -1,42 +1,58 @@
 # Patient Rail handoff
 
-## Independent verification 2 — FAIL
+## Repair 2 result
 
-Independent QA on 6 September 2026 found one remaining medium issue and no untested claims. At 390 by 844, several secondary links are only 20–24 pixels high and **Reset demo** is 38 pixels high. This does not meet the required 44 by 44 CSS-pixel touch target baseline. See `.factory/verification-2.md` for measurements and complete evidence.
+The remaining touch-target finding is repaired and verified on 6 September 2026. The implementation commit is `8231d0bff1695ee72d8d8a805c90f36d304d39d7`. It is pushed to `main` and deployed at <https://patient-rail.sociobot.in>.
 
-All three findings from verification 1 are closed, all 12 claim commands pass independently, and both the clean local suite and live HTTPS suite pass. The implementation reviewed remains `0b56f836fbb81d7dfaaa7a5bf67464455336d640`; the pre-verification documentation and test-harness commit is `36afc80eef6b4473463ac21a9f92ca4237cee690`.
+Independent verification 2 remains in `.factory/verification-2.md` as the pre-repair record. It reviewed implementation `0b56f836fbb81d7dfaaa7a5bf67464455336d640` and reported one medium finding.
 
-## Repair verification results
+## Finding disposition
 
-The three findings from independent verification 1 are repaired and retested on 6 September 2026. The deployed product implementation is `0b56f836fbb81d7dfaaa7a5bf67464455336d640`.
+### V2-1 — phone touch targets — closed
 
-- **V1 — 404 CSP:** `404.html` now loads the cut-paper styles from same-origin `/404.css`. A fresh HTTPS browser received HTTP 404, rendered the navy and cream recovery page, and reported no CSP errors.
-- **V2 — phone first viewport:** at 390 by 844, the copper-marked playable cell is at y=752.6 through y=796.6. It is fully visible, resolves turn one on tap, and does not scroll the page. The first screen still states the job, audience, sample action, first action, and three facts.
-- **V3 — dated seeds:** the finishability claim now plays the safe Fire route through all 108 possible tactical configurations: six car orders, six enemy-family orders, and three weather rules. Route labels never affect a turn. Every configuration won in 15 turns with all cars above zero integrity.
+All links and buttons now have a 44 by 44 CSS-pixel minimum target. The text-style demo control, article links, footer links, activation link, and email links inherit that baseline without changing their labels or behavior.
 
-The earlier failing report remains at `.factory/verification-1.md` as history. Its documentation commit was `cf409a344b9d3142d78b35656e45faca832c5446`; it reported the pre-repair implementation `78effd5584066428b9a838540e06546e8eb89c56`.
+The new browser regression measures rendered geometry instead of checking CSS text. At 390 by 844 it checks every visible link, button, summary, and labeled input target on `/`, `/demo`, `/how-to-play`, `/archive`, `/license`, `/privacy`, `/terms`, the app not-found route, the standalone 404 page, and the open settings dialog.
+
+Fresh live measurements found zero undersized targets:
+
+| Route | Targets | Smallest width | Smallest height |
+| --- | ---: | ---: | ---: |
+| `/` | 64 | 44 px | 44 px |
+| `/demo` | 66 | 44 px | 44 px |
+| `/how-to-play` | 8 | 44 px | 44 px |
+| `/archive` | 10 | 44 px | 44 px |
+| `/license` | 8 | 44 px | 44 px |
+| `/privacy` | 8 | 44 px | 44 px |
+| `/terms` | 8 | 44 px | 44 px |
+| App not found | 8 | 44 px | 44 px |
+| HTTP 404 | 1 | 201.5 px | 48 px |
+
+The controls named in the failed report now measure as follows: **Reset demo** 89 by 44; rules link 358 by 44; privacy link 174 by 44; **Terms** 44 by 44; activation link 227 by 44; and email links 145–149 by 44 pixels.
+
+All three findings from verification 1 remain closed: the HTTP 404 loads same-origin CSS without a CSP error, the phone viewport shows a fully usable intent cell, and all 108 possible dated-seed configurations have a tested safe route.
 
 ## Product
 
-Patient Rail is a deterministic 7 by 7, turn-based train-defense game for roguelike players who want a readable daily run instead of real-time combat. The active board is on the first screen. A 15-turn run has three stops, one player action per turn, one visible enemy intent, seeded train layouts, enemy families, and a final weather rule.
+Patient Rail is a deterministic 7 by 7, turn-based train-defense game for roguelike players who want a readable daily run instead of real-time combat. A 15-turn run has three stops, one action per turn, one visible enemy intent, seeded layouts, enemy families, and a final weather rule.
 
-The live URL is <https://patient-rail.sociobot.in>.
+The first action is to choose the copper-marked enemy and Fire. The live first screen shows this instruction, the audience, the sample action, three facts, and the active board before scrolling on phone and desktop.
 
-## Delivered
+## Delivered behavior
 
 - Daily UTC seed and fixed sample seed `SAMPLE-EMBER-7`.
 - Fire, Patch, limited Brace, and Hold position actions.
 - Visible intent, win, loss, restart, saved daily progress, damaged-save recovery, and saved board settings.
-- Keyboard grid movement, Enter/Space actions, B and W shortcuts, spoken cell labels, live status text, and designed focus states.
-- A compact phone layout that keeps the active intent cell usable before scroll.
-- Same-origin service worker for offline reload after the first online visit.
-- Real routes for demo, rules, archive, activation status, privacy, terms, and a designed HTTP 404 response.
-- Self-hosted IBM Plex Sans and IBM Plex Mono assets plus original CSS/SVG cut-paper artwork.
-- Exact US$8 one-time offline archive metadata for the billing operator.
+- Keyboard grid movement, screen-reader cell labels, live status text, and designed focus states.
+- A persistent sample label, isolated sample storage, reset, and exit to the daily game.
+- Same-origin service worker support for offline reload after the first online visit.
+- Real rules, archive, activation, privacy, terms, app-not-found, and HTTP 404 routes.
+- Self-hosted IBM Plex Sans and IBM Plex Mono plus original CSS and SVG cut-paper art.
+- Exact US$8 one-time archive metadata for the separate billing operator.
 
 ## Verification
 
-Clean setup used Node.js 22 and npm 10:
+The documented clean setup used Node.js 22.23.2 and npm 10.9.8 in a fresh clone of the implementation commit.
 
 ```sh
 npm ci
@@ -44,36 +60,40 @@ npm test
 npm run build
 ```
 
-- `npm ci`: 0 dependency vulnerabilities.
-- `npm run build`: passed and wrote `dist/`; production JavaScript is 10.78 KB gzip.
-- Local `npm test`: 7 deterministic engine tests and 25 Chromium tests passed.
-- All 12 commands declared in `.factory/claims.json` passed separately: complete run, loss/restart, complete seed-domain proof, demo isolation, local privacy, offline reload, keyboard play, resumed progress, settings, invalid actions, seed variation, and pending billing.
-- Full `npm test` also passed against the HTTPS product after deployment: 7 engine tests and 25 browser tests.
-- Fresh desktop HTTPS check: title, one h1, main landmark, active board, plain first action, and no console errors.
-- Fresh phone HTTPS check: the intent cell was fully visible at 390 by 844; tapping it advanced to turn two with `scrollY` unchanged.
-- Fresh demo HTTPS checks: the persistent sample label showed; 15 visible-intent actions reached the win screen; restart returned to turn one; Hold position reached the loss screen.
-- Fresh `/404` HTTPS check: GET returned 404; the styled recovery page loaded; no CSP error occurred. An expected failed-resource notice for a deliberately 404 document is not counted as a page defect.
-- Axe found no serious or critical issues on `/`, `/demo`, `/how-to-play`, `/archive`, `/license`, `/privacy`, and `/terms`.
-- The live JavaScript asset `index-DSD14DYL.js` matched the local production artifact by SHA-256: `349f5cd3760706d5496fff33900bcbe4e1d533c294bde9d96245599537fe8a21`.
+- `npm ci`: passed with zero dependency vulnerabilities.
+- Every command in `.factory/claims.json`: passed separately from the clean clone.
+- `npm test`: 7 deterministic engine tests and 26 Chromium tests passed locally.
+- `npm run build`: passed and created `dist/`.
+- Production JavaScript: 32.43 KB raw and 10.78 KB gzip.
+- Production CSS: 21.14 KB raw and 5.50 KB gzip.
+- Live HTTPS: the same 7 engine and 26 browser tests passed after deployment.
+- Axe: no serious or critical finding on any named product route.
+- Factory URL verifier: correct title and language, one h1, one main, no missing labels, and no console error.
+- Lighthouse mobile: 99 performance, 100 accessibility, 100 best practices, and 100 SEO. LCP was 1.20 seconds, TBT 0 ms, CLS 0.069, and the touch-target audit passed.
+- Frame sample: 182 frames over 3.01 seconds, 60.0 fps, and a 16.8 ms maximum interval at 390 by 844. Gameplay does not depend on animation.
+- Fresh desktop and phone: the intent cell was fully visible before scrolling. It measured 75.7 px square on desktop and 44 px square on phone.
+- Live JavaScript SHA-256: `8e17c71b6883cbfeb9c0c1a32601cdd26ff68192f9877c1fbc10b680af5ddbdd`, matching `dist/`.
+- Live CSS SHA-256: `09e267c81239c9974c7e0bc32589242434f7b3994840282ab9634f31fea64cf3`, matching `dist/`.
+- All named product routes and public metadata returned 200. `/404` deliberately returned 404 with a working recovery action.
+- The fixed sample reached **Route complete** in 15 Fire actions. Hold position reached **Train stopped** in 11 actions. Restart restored turn one.
 
-Current evidence includes the corrected phone first screen in `.factory/evidence/phone-first-screen.png`. The existing desktop, win, and loss evidence remains applicable.
+Current evidence is under `.factory/evidence/`, including fresh phone, desktop, win, loss, URL-verifier, Lighthouse, run-summary, and touch-target records.
 
 ## Privacy and operations
 
-There is no backend, account, telemetry, third-party script, or runtime model call. Game state is limited to namespaced browser local storage. The sample uses `demo:patient-rail:run:v1`; daily keys use `patient-rail:daily:*`. The CSP restricts scripts, styles, fonts, images, connections, workers, and forms to the product origin.
+There is no backend, account, telemetry, third-party script, or runtime model call. Game state stays in namespaced browser local storage. The sample uses `demo:patient-rail:run:v1`; daily progress uses `patient-rail:daily:*`.
 
-The repair deployed only the existing static product `sf-patient-rail` in Central US. It reused the existing static app and custom domain; no shared service, database, staging slot, unrelated resource, or secret was read or changed.
+This repair deployed only the existing `sf-patient-rail` static app. It did not change DNS, billing, a database, a staging slot, or any unrelated resource.
 
 ## Known dependency
 
-The one-time offline/archive offer is not registered. Purchase, entitlement validation, archive date selection, and activation remain unavailable and are labeled that way in the product. The free daily game and fixed sample are complete.
+The US$8 one-time offline/archive offer is not registered. Purchase, entitlement validation, archive date selection, and activation remain unavailable and are labeled that way. The free daily game and sample are complete.
 
-The separate billing operator can use `/work/.evidence/billing-offer.json`. It defines `patient-rail-offline-archive`, US$8 once, the exact return URL, paid features, and `/license` validation route. A checkout redirect must not unlock the archive without verified entitlement.
+The billing operator can use `/work/.evidence/billing-offer.json`. A checkout redirect must not unlock the archive without verified entitlement.
 
 ## Next steps
 
-1. Increase every phone interaction target to at least 44 by 44 CSS pixels, including demo, article, footer, activation, and email links; add an automated all-route target-size check.
-2. Register the one-time offer through the Sociobot billing operator.
-3. Add the documented entitlement validation call to `/license` after the operator provides the registered contract.
-4. Re-test checkout, signed entitlement, restore purchase, and offline dated-seed selection before advertising activation.
-5. Measure the brief’s completion and return-rate goals only if a privacy-preserving, consented measurement plan is approved.
+1. Register the one-time offer through the Sociobot billing operator.
+2. Add entitlement validation to `/license` after registration.
+3. Test checkout, restore purchase, and dated-seed selection before advertising activation.
+4. Measure completion and return-rate goals only under an approved privacy-preserving plan.

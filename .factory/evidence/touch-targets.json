@@ -1,0 +1,25 @@
+{
+  "url": "https://patient-rail.sociobot.in",
+  "implementation": "8231d0bff1695ee72d8d8a805c90f36d304d39d7",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "has_touch": true
+  },
+  "minimum_css_pixels": {
+    "width": 44,
+    "height": 44
+  },
+  "result": "pass",
+  "routes": [
+    { "path": "/", "status": 200, "targets": 64, "smallest_width": 44, "smallest_height": 44, "undersized": 0 },
+    { "path": "/demo", "status": 200, "targets": 66, "smallest_width": 44, "smallest_height": 44, "undersized": 0 },
+    { "path": "/how-to-play", "status": 200, "targets": 8, "smallest_width": 44, "smallest_height": 44, "undersized": 0 },
+    { "path": "/archive", "status": 200, "targets": 10, "smallest_width": 44, "smallest_height": 44, "undersized": 0 },
+    { "path": "/license", "status": 200, "targets": 8, "smallest_width": 44, "smallest_height": 44, "undersized": 0 },
+    { "path": "/privacy", "status": 200, "targets": 8, "smallest_width": 44, "smallest_height": 44, "undersized": 0 },
+    { "path": "/terms", "status": 200, "targets": 8, "smallest_width": 44, "smallest_height": 44, "undersized": 0 },
+    { "path": "/not-found-check", "status": 200, "targets": 8, "smallest_width": 44, "smallest_height": 44, "undersized": 0 },
+    { "path": "/404", "status": 404, "targets": 1, "smallest_width": 201.5, "smallest_height": 48, "undersized": 0 }
+  ]
+}

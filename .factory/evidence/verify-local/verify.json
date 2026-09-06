@@ -1,6 +1,6 @@
 {
-  "url": "http://127.0.0.1:4173/",
-  "loadMs": 667,
+  "url": "http://127.0.0.1:4173",
+  "loadMs": 836,
   "errors": [],
   "a11y": {
     "title": "Patient Rail — turn-based train defense",
@@ -9,6 +9,6 @@
     "main": true,
     "imgsMissingAlt": 0,
     "buttonsUnlabeled": 0,
-    "textLength": 2285
+    "textLength": 2267
   }
 }
