@@ -1,0 +1,295 @@
+{
+  "checkedAt": "2026-09-06T04:30:07.861Z",
+  "base": "https://patient-rail.sociobot.in",
+  "desktop": {
+    "title": "Patient Rail — turn-based train defense",
+    "h1": "Defend a train, one turn at a time",
+    "audience": "For roguelike players who want a readable 15-turn daily run without real-time combat.",
+    "firstAction": "First action: choose the copper-marked enemy, then Fire.",
+    "sampleAction": "Try it with sample data",
+    "boardHeading": "Today’s active board",
+    "scrollY": 0,
+    "documentWidth": 1440,
+    "clientWidth": 1440,
+    "h1Box": {
+      "x": 16,
+      "y": 203.5,
+      "width": 364.609375,
+      "height": 200.859375,
+      "fullyVisible": true
+    },
+    "audienceBox": {
+      "x": 16,
+      "y": 424.359375,
+      "width": 364.609375,
+      "height": 91.171875,
+      "fullyVisible": true
+    },
+    "sampleBox": {
+      "x": 16,
+      "y": 539.53125,
+      "width": 215,
+      "height": 50,
+      "fullyVisible": true
+    },
+    "firstActionBox": {
+      "x": 16,
+      "y": 659.53125,
+      "width": 364.609375,
+      "height": 48,
+      "fullyVisible": true
+    },
+    "intentCellBox": {
+      "x": 644.640625,
+      "y": 543.34375,
+      "width": 75.71875,
+      "height": 75.71875,
+      "fullyVisible": true
+    },
+    "errors": [],
+    "requestOrigins": [
+      "https://patient-rail.sociobot.in"
+    ]
+  },
+  "phone": {
+    "title": "Patient Rail — turn-based train defense",
+    "h1": "Defend a train, one turn at a time",
+    "audience": "For roguelike players who want a readable 15-turn daily run without real-time combat.",
+    "firstAction": "First action: choose the copper-marked enemy, then Fire.",
+    "sampleAction": "Try it with sample data",
+    "boardHeading": "Today’s active board",
+    "scrollY": 0,
+    "documentWidth": 390,
+    "clientWidth": 390,
+    "h1Box": {
+      "x": 16,
+      "y": 107.5,
+      "width": 260,
+      "height": 73.4375,
+      "fullyVisible": true
+    },
+    "audienceBox": {
+      "x": 16,
+      "y": 192.9375,
+      "width": 358,
+      "height": 51.65625,
+      "fullyVisible": true
+    },
+    "sampleBox": {
+      "x": 16,
+      "y": 260.59375,
+      "width": 215,
+      "height": 50,
+      "fullyVisible": true
+    },
+    "firstActionBox": {
+      "x": 16,
+      "y": 326.59375,
+      "width": 358,
+      "height": 48,
+      "fullyVisible": true
+    },
+    "intentCellBox": {
+      "x": 126,
+      "y": 752.59375,
+      "width": 44,
+      "height": 44,
+      "fullyVisible": true
+    },
+    "errors": [],
+    "requestOrigins": [
+      "https://patient-rail.sociobot.in"
+    ],
+    "reducedMotionTransition": "1e-05s",
+    "undersizedTargetsOnDemo": 0,
+    "widthAt200PercentText": 390
+  },
+  "demo": {
+    "oneClickPath": "/demo",
+    "seed": "SAMPLE-EMBER-7",
+    "cells": 49,
+    "cars": 3,
+    "stops": [
+      "Alder Junction",
+      "Copper Cut",
+      "Summit Shed"
+    ],
+    "firstIntent": "Copper beetle will attack Engine for 1. Brace would block 1.",
+    "bannerPersistent": true,
+    "resetTurn": 1,
+    "dailySentinel": "{\"daily\":\"unchanged\"}",
+    "invalidActionsKeptTurn": true,
+    "settingsPersisted": true,
+    "settingsFocusReturned": true,
+    "startForRealDiscardedDemo": true,
+    "errors": [],
+    "requestOrigins": [
+      "https://patient-rail.sociobot.in"
+    ],
+    "storageKeysBeforeLeavingDemo": [
+      "demo:patient-rail:run:v1",
+      "patient-rail:daily:review-sentinel:v1",
+      "patient-rail:settings:v1"
+    ]
+  },
+  "win": {
+    "heading": "Route complete",
+    "intentsObserved": 15,
+    "summary": {
+      "Threats cleared": "10",
+      "Turns used": "15",
+      "Brake tokens": "3"
+    },
+    "restartTurn": 1,
+    "restartFullCars": 3,
+    "errors": []
+  },
+  "loss": {
+    "heading": "Train stopped",
+    "holds": 11,
+    "restartTurn": 1,
+    "errors": []
+  },
+  "keyboard": {
+    "cells": 49,
+    "uniqueNames": 49,
+    "keys": [
+      "Tab",
+      "ArrowRight",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowUp",
+      "Enter",
+      "Space",
+      "B",
+      "W"
+    ],
+    "actionsAdvanced": true
+  },
+  "recovery": {
+    "damagedSaveStartedFresh": true,
+    "damagedMessage": "Saved progress was damaged, so a new run was started.",
+    "reloadResumedTurn": 2,
+    "offlineReloadAdvancedTurn": 3
+  },
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "Patient Rail — turn-based train defense",
+      "h1": 1,
+      "main": 1,
+      "errors": []
+    },
+    {
+      "path": "/demo",
+      "status": 200,
+      "title": "Demo — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "errors": []
+    },
+    {
+      "path": "/how-to-play",
+      "status": 200,
+      "title": "How to play — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "errors": []
+    },
+    {
+      "path": "/archive",
+      "status": 200,
+      "title": "Offline archive — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "errors": []
+    },
+    {
+      "path": "/license",
+      "status": 200,
+      "title": "Archive activation — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "errors": []
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "title": "Privacy — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "errors": []
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "title": "Terms — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "errors": []
+    },
+    {
+      "path": "/not-found-review",
+      "status": 200,
+      "title": "Page not found — Patient Rail",
+      "h1": 1,
+      "main": 1,
+      "errors": []
+    },
+    {
+      "path": "/404",
+      "status": 404,
+      "designed": true,
+      "recoveryLink": true
+    }
+  ],
+  "links": [
+    {
+      "href": "https://patient-rail.sociobot.in/#main",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/demo",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/how-to-play",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/privacy",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/archive",
+      "status": 200
+    },
+    {
+      "href": "https://patient-rail.sociobot.in/terms",
+      "status": 200
+    },
+    {
+      "href": "https://sociobot.in/",
+      "status": 200
+    }
+  ],
+  "headers": {
+    "status": 200,
+    "contentSecurityPolicy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; object-src 'none'",
+    "xContentTypeOptions": "nosniff",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=()",
+    "crossOriginOpenerPolicy": "same-origin"
+  },
+  "frameCadence": {
+    "frames": 181,
+    "durationMs": 3010.500000000023,
+    "averageFps": 59.79073243647189,
+    "maximumGapMs": 16.799999999999727
+  }
+}

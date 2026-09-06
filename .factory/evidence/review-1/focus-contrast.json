@@ -1,0 +1,24 @@
+{
+  "live_url": "https://patient-rail.sociobot.in",
+  "requirement": "Keyboard focus indicator contrast must be at least 3:1 against adjacent colors.",
+  "checks": [
+    {
+      "route": "/privacy",
+      "control": "privacy@sociobot.in link",
+      "focused": true,
+      "outline": "4px solid rgb(227, 172, 40), offset 4px",
+      "adjacent_background": "rgb(255, 247, 223)",
+      "contrast_ratio": 1.924,
+      "result": "FAIL"
+    },
+    {
+      "route": "/404",
+      "control": "Open today’s run link",
+      "focused": true,
+      "outline": "4px solid rgb(255, 247, 223), offset 4px",
+      "adjacent_background": "rgb(255, 247, 223)",
+      "contrast_ratio": 1.0,
+      "result": "FAIL"
+    }
+  ]
+}

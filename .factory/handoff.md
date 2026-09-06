@@ -1,5 +1,27 @@
 # Patient Rail handoff
 
+## Review 1 — FAIL
+
+Fresh strict QA on 6 September 2026 reviewed implementation `09ec2c2f36dfd0951508dcc0957568973044726b`, documentation baseline `6a3f5ff6c77205dcf225765277072f6729344091`, and starting review commit `34ed638062a2d7b09e0730c20e81dd2b4d4d2181`.
+
+One medium accessibility finding remains. General keyboard focus uses a mustard outline with only 1.92:1 contrast on cream content pages. The static 404 recovery link uses a cream outline on the same cream surface, producing 1.00:1 contrast. Both miss the required 3:1 focus-indicator contrast. Axe reports zero violations because it does not measure this condition.
+
+The review made no product-code change. Full evidence, the repair target, and the unambiguous verdict are in `.factory/review-1.md`.
+
+### Verification completed
+
+- A clean clone passed `npm ci`, `npm test` (7 engine and 26 Chromium tests), all 12 claim commands separately, and `npm run build`.
+- The full 7-engine/26-browser suite passed against live HTTPS.
+- Fresh desktop and phone contexts showed the job, audience, first action, and active board before scrolling.
+- The sample won after 15 Fire actions and lost after 11 Hold actions. Reset, restart, demo isolation, daily recovery, damaged-state recovery, settings, every advertised key, all 49 spoken cell labels, reduced motion, 200% text, and offline reload passed.
+- All named routes, links, metadata files, legal pages, and the deliberate 404 were checked. Playwright axe reported zero violations on all application routes.
+- Live JS and CSS hashes exactly matched the clean implementation build.
+- Fresh Lighthouse mobile scored 100 in performance, accessibility, best practices, and SEO. LCP was 1.201 s, TBT 0 ms, and CLS 0.049.
+
+### Required next step
+
+Replace the focus indicator with a treatment that reaches at least 3:1 against every adjacent surface, including cream article pages and the static 404. Then rerun the full claim suite, live accessibility checks, and this review. Do not mark the product PASS until that finding is closed.
+
 ## Independent verification 4 — PASS
 
 Independent QA on 6 September 2026 reviewed implementation `09ec2c2f36dfd0951508dcc0957568973044726b` and documentation `6a3f5ff6c77205dcf225765277072f6729344091`. The live JS and CSS hashes exactly matched a clean implementation build. A separate clean clone passed `npm ci`, `npm test` (7 engine and 26 browser tests), every one of the 12 declared claim commands, and `npm run build`.
