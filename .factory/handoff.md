@@ -1,5 +1,21 @@
 # Patient Rail handoff
 
+## Independent verification 5 — PASS
+
+Independent QA on 6 September 2026 reviewed implementation `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8` and documentation baseline `619cb5f723cb47d7f4e0fefc717bf4322ef414c9`. The later commit changes only handoff and Lighthouse evidence. Live JavaScript and CSS hashes exactly matched a clean build of the implementation.
+
+A separate clean clone passed `npm ci`, `npm test` (7 engine and 27 browser tests), every one of the 12 declared claim commands run separately, and `npm run build`. The same complete suite passed against live HTTPS.
+
+Fresh 1440 × 950 and 390 × 844 contexts showed the job, audience, first action, sample link, and active board at scroll position zero. One click opened the isolated populated sample. Reset preserved a daily sentinel. The sample won after 15 Fire actions, lost after 11 Hold position actions, and restarted at turn 1 with all cars full.
+
+The focus repair is closed independently. Live controls on cream and navy plus the static 404 recovery link rendered two 3 px bands. Their relevant contrasts were 7.02:1, 13.68:1, and 3.65:1. Axe reported zero violations on all seven application routes; keyboard, dialog focus, touch targets, reduced motion, 200% text, offline reload, route titles, links, legal pages, privacy requests, and recovery paths passed.
+
+Fresh live mobile Lighthouse scored 100 performance, 100 accessibility, 100 best practices, and 100 SEO. LCP was 1.2 s, total blocking time 50 ms, CLS 0.049, and transfer size 83 KiB. A fresh phone frame sample measured 60.0 fps; no rule depends on animation and no frame-rate claim is public.
+
+The complete report is `.factory/verification-5.md`; fresh evidence is under `.factory/evidence/verification-5/`. There are zero findings and zero untested claims. Verdict: **PASS**.
+
+The disclosed external dependency is unchanged: the US$8 archive purchase remains disabled until billing registration and entitlement validation are available. The free daily game and sample are complete.
+
 ## Repair 4 — PASS
 
 The current implementation is `adf1a708d2e978f2a17aa2e5e3fd29516b8268c8` (`fix: strengthen keyboard focus contrast`). It is pushed to `main` and deployed to <https://patient-rail.sociobot.in>. This repair touched only the existing `sf-patient-rail` static app.

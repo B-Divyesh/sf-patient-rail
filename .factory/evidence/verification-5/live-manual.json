@@ -1,0 +1,36 @@
+{
+  "candidate_commit": "adf1a708d2e978f2a17aa2e5e3fd29516b8268c8",
+  "live_url": "https://patient-rail.sociobot.in",
+  "first_screen": {
+    "desktop": { "viewport": "1440x950", "scroll_y": 0, "intent_cell": "75.7x75.7 at y 543.3", "body_overflow": 0 },
+    "phone": { "viewport": "390x844", "scroll_y": 0, "intent_cell": "44x44 at y 752.6", "body_overflow": 0 },
+    "job": "Defend a train, one turn at a time",
+    "audience": "For roguelike players who want a readable 15-turn daily run without real-time combat.",
+    "first_action": "First action: choose the copper-marked enemy, then Fire."
+  },
+  "demo": {
+    "seed": "SAMPLE-EMBER-7",
+    "banner_persisted": true,
+    "reset_turn": 1,
+    "daily_sentinel_unchanged": true,
+    "demo_key_removed_on_exit": true,
+    "request_origins": ["https://patient-rail.sociobot.in"]
+  },
+  "win": { "actions": 15, "heading": "Route complete", "train_integrity": 13, "threats_cleared": 10, "brake_tokens": 3 },
+  "loss": { "actions": 11, "heading": "Train stopped", "restart_turn": 1, "full_cars": 3 },
+  "focus": {
+    "band_width_px": 3,
+    "dark_teal_on_cream": 7.02,
+    "cream_on_navy": 13.68,
+    "dark_teal_on_mustard": 3.65,
+    "static_404_passed": true
+  },
+  "accessibility": {
+    "axe_route_violations": 0,
+    "dialog_focus_returned": true,
+    "reduced_motion_transition": "0.00001s",
+    "text_200_percent_body_overflow": 0
+  },
+  "frame_sample": { "elapsed_ms": 3016.5, "frames": 181, "fps": 60.0, "max_interval_ms": 16.8 },
+  "expected_404_status": 404
+}
