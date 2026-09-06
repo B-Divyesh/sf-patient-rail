@@ -1,0 +1,13 @@
+{
+  "seed": "SAMPLE-EMBER-7",
+  "win": {
+    "actions": 15,
+    "strategy": "Fire on the shown intent",
+    "endScreen": "THREE STOPS COMPLETE\n\nRoute complete\n\nYou reached Summit Shed with 13 train integrity.\n\nThreats cleared\n10\nTurns used\n15\nBrake tokens\n3\nRestart sample"
+  },
+  "loss": {
+    "actions": 15,
+    "strategy": "Hold position",
+    "endScreen": "THREE STOPS COMPLETE\n\nRoute complete\n\nYou reached Summit Shed with 9 train integrity.\n\nThreats cleared\n0\nTurns used\n15\nBrake tokens\n3\nRestart sample"
+  }
+}

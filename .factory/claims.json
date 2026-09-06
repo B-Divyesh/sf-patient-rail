@@ -1,0 +1,86 @@
+[
+  {
+    "id": "complete-seeded-run",
+    "claim": "The sample seed can be played through all three stops to a win.",
+    "where": "game goal, README",
+    "test": "npm test -- --grep @claim:complete-seeded-run",
+    "sandbox": "fresh browser context at /demo; play visible intents until the win summary"
+  },
+  {
+    "id": "loss-restart",
+    "claim": "A lost run reaches an end screen and restart restores the opening state.",
+    "where": "game end screen, README",
+    "test": "npm test -- --grep @claim:loss-restart",
+    "sandbox": "fresh browser context at /demo; hold position to lose; restart; assert turn, integrity and intent reset"
+  },
+  {
+    "id": "finishable-seeds",
+    "claim": "Every dated seed has a safe route through three stops.",
+    "where": "How it works, README",
+    "test": "npm test -- --grep @claim:finishable-seeds",
+    "sandbox": "deterministic engine; play Brace for 366 dated seeds and require a win for each"
+  },
+  {
+    "id": "demo-isolation",
+    "claim": "The sample run never changes daily progress.",
+    "where": "demo banner, privacy page",
+    "test": "npm test -- --grep @claim:demo-isolation",
+    "sandbox": "seed daily storage; change and reset demo; assert daily storage is byte-for-byte unchanged"
+  },
+  {
+    "id": "local-privacy",
+    "claim": "Playing a run sends no game or personal data off the product origin.",
+    "where": "first-screen facts, privacy page, README",
+    "test": "npm test -- --grep @claim:local-privacy",
+    "sandbox": "record all requests for a demo action and settings change; require the product origin only"
+  },
+  {
+    "id": "offline-reload",
+    "claim": "The daily game reloads offline after one online visit.",
+    "where": "paid offer comparison, README",
+    "test": "npm test -- --grep @claim:offline-reload",
+    "sandbox": "dedicated fresh browser context; claim service worker control; go offline; reload and take a turn"
+  },
+  {
+    "id": "keyboard-play",
+    "claim": "The board and turn actions work with a keyboard.",
+    "where": "controls, README",
+    "test": "npm test -- --grep @claim:keyboard-play",
+    "sandbox": "fresh demo; focus board; use arrows and B; assert one resolved turn and focus remains usable"
+  },
+  {
+    "id": "resume-progress",
+    "claim": "The current daily run resumes after a reload.",
+    "where": "first-screen facts, README",
+    "test": "npm test -- --grep @claim:resume-progress",
+    "sandbox": "fresh daily run; resolve one turn; reload; assert seed, turn, train health and log are preserved"
+  },
+  {
+    "id": "settings-persist",
+    "claim": "Board coordinate settings persist in this browser.",
+    "where": "settings panel",
+    "test": "npm test -- --grep @claim:settings-persist",
+    "sandbox": "fresh browser context; hide coordinates; reload; assert coordinate labels stay hidden"
+  },
+  {
+    "id": "invalid-no-turn",
+    "claim": "Invalid board choices do not use a turn.",
+    "where": "How to play",
+    "test": "npm test -- --grep @claim:invalid-no-turn",
+    "sandbox": "fresh sample; choose an empty cell and a full car; assert the turn stays at one and an explanation is announced"
+  },
+  {
+    "id": "seed-variation",
+    "claim": "Dated seeds vary the car order, enemy families, and final weather.",
+    "where": "README",
+    "test": "npm test -- --grep @claim:seed-variation",
+    "sandbox": "generate 40 dated configurations; require multiple car orders, family orders, and all three weather rules"
+  },
+  {
+    "id": "billing-pending",
+    "claim": "Purchase and archive activation are unavailable until the offer is registered.",
+    "where": "offer card, archive, license, terms",
+    "test": "npm test -- --grep @claim:billing-pending",
+    "sandbox": "fresh browser; open archive and license routes; require disabled purchase state, pending explanation, and no checkout request"
+  }
+]

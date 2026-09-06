@@ -1,0 +1,15 @@
+{
+  "slug": "patient-rail-offline-archive",
+  "name": "Patient Rail Offline Archive",
+  "price_minor": 800,
+  "currency": "USD",
+  "price_type": "one_time_price",
+  "return_url": "https://patient-rail.sociobot.in/license?purchase=complete",
+  "price_evidence": "The public /archive offer and /terms set the price at US$8 once. Billing registration is explicitly pending.",
+  "paid_features": [
+    "Choose and replay any published dated seed",
+    "Keep selected and saved routes available offline",
+    "Use the complete game with no subscription"
+  ],
+  "license_validation_path": "/license"
+}

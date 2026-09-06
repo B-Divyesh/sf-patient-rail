@@ -1,0 +1,12 @@
+{
+  "name": "Patient Rail",
+  "short_name": "Patient Rail",
+  "description": "A turn-based daily train-defense game.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#102a43",
+  "theme_color": "#102a43",
+  "icons": [
+    { "src": "/apple-touch-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

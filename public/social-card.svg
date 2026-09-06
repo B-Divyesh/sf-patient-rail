@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">Patient Rail</title><desc id="d">A cut-paper train crosses a teal grid while one copper enemy intent is marked.</desc>
+  <rect width="1200" height="630" fill="#102a43"/>
+  <path d="M72 72h1056v486H72z" fill="#fff7df" transform="rotate(-1 600 315)"/>
+  <g stroke="#147d78" stroke-width="12" opacity=".9">
+    <path d="M520 135v360M590 135v360M660 135v360M730 135v360"/>
+    <path d="M430 225h390M430 295h390M430 365h390M430 435h390"/>
+  </g>
+  <path d="M455 292h287l49 73v70H455z" fill="#e3ac28" stroke="#071d2e" stroke-width="12"/>
+  <path d="M699 292v75h92" fill="#fff7df" stroke="#071d2e" stroke-width="12"/>
+  <circle cx="535" cy="435" r="32" fill="#b4532a" stroke="#071d2e" stroke-width="12"/>
+  <circle cx="704" cy="435" r="32" fill="#b4532a" stroke="#071d2e" stroke-width="12"/>
+  <path d="M865 185l45 24-9 50-50 7-25-44z" fill="#b4532a" stroke="#071d2e" stroke-width="10"/>
+  <path d="M148 164h232v28H148zM148 211h182v18H148zM148 386h215v18H148zM148 422h166v18H148z" fill="#071d2e"/>
+  <circle cx="164" cy="522" r="12" fill="#147d78"/><circle cx="204" cy="522" r="12" fill="#e3ac28"/><circle cx="244" cy="522" r="12" fill="#b4532a"/>
+</svg>
