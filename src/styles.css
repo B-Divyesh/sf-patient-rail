@@ -40,9 +40,20 @@ body {
 }
 
 button, input { font: inherit; }
-button, a { -webkit-tap-highlight-color: transparent; }
+button, a {
+  min-width: 44px;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
 button { color: inherit; }
-a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 0.09em; }
+a {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.09em;
+  vertical-align: middle;
+}
 a:hover { text-decoration-thickness: 0.16em; }
 button:not(:disabled), a { cursor: pointer; }
 

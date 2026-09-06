@@ -66,6 +66,40 @@ test('phone layout shows job, action, and usable game without body overflow', as
   expect(await page.evaluate(() => window.scrollY)).toBe(viewport.scrollY);
 });
 
+test('@a11y phone interaction targets are at least 44 by 44 pixels on every route', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const routes = ['/', '/demo', '/how-to-play', '/archive', '/license', '/privacy', '/terms', '/not-found-check', '/404.html'];
+
+  const undersizedTargets = async () => page
+    .locator('a[href], button, summary, label:has(input:not([type="hidden"]))')
+    .evaluateAll((elements) => elements.flatMap((element) => {
+      const bounds = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const visible = bounds.width > 0
+        && bounds.height > 0
+        && style.display !== 'none'
+        && style.visibility !== 'hidden';
+      if (!visible || (bounds.width >= 44 && bounds.height >= 44)) return [];
+      return [{
+        name: element.getAttribute('aria-label') || element.textContent?.trim().replace(/\s+/g, ' ') || element.tagName,
+        width: Math.round(bounds.width * 10) / 10,
+        height: Math.round(bounds.height * 10) / 10,
+      }];
+    }));
+
+  for (const route of routes) {
+    await page.goto(route);
+    expect(await undersizedTargets(), `${route} has an undersized visible interaction target`).toEqual([]);
+
+    const settingsButton = page.getByRole('button', { name: 'Board settings' });
+    if (await settingsButton.isVisible().catch(() => false)) {
+      await settingsButton.click();
+      expect(await undersizedTargets(), `${route} settings has an undersized visible interaction target`).toEqual([]);
+      await page.getByRole('button', { name: 'Close board settings' }).click();
+    }
+  }
+});
+
 test('designed 404 loads its same-origin stylesheet under the production CSP', async ({ page }) => {
   const live404 = await page.request.get('/404');
   let html: string;
