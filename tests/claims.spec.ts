@@ -53,11 +53,12 @@ test('@claim:demo-isolation sample actions and reset leave daily keys unchanged'
   await expect(page.getByText('The sample was reset. Daily progress was not changed.')).toBeVisible();
 });
 
-test('@claim:local-privacy play and settings contact only the product origin', async ({ page }) => {
+test('@claim:local-privacy play and settings contact only the product origin', async ({ page, baseURL }) => {
   const externalOrigins = new Set<string>();
+  const productOrigin = new URL(baseURL!).origin;
   page.on('request', (request) => {
     const requestOrigin = new URL(request.url()).origin;
-    if (requestOrigin !== 'http://127.0.0.1:4173') externalOrigins.add(requestOrigin);
+    if (requestOrigin !== productOrigin) externalOrigins.add(requestOrigin);
   });
   await page.goto('/demo');
   await page.locator('[data-cell].is-intent').click();
