@@ -141,14 +141,14 @@ test('designed 404 loads its same-origin stylesheet under the production CSP', a
 });
 
 for (const path of ['/', '/demo', '/how-to-play', '/archive', '/license', '/privacy', '/terms']) {
-  test(`@a11y ${path} has no serious accessibility violations`, async ({ page }) => {
+  test(`@a11y ${path} has no automated accessibility violations`, async ({ page }) => {
     const errors: string[] = [];
     page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
     await page.goto(path);
     await expect(page.locator('main')).toHaveCount(1);
     await expect(page.locator('h1')).toHaveCount(1);
     const results = await new AxeBuilder({ page: page as never }).analyze();
-    expect(results.violations.filter((violation) => ['serious', 'critical'].includes(violation.impact ?? ''))).toEqual([]);
+    expect(results.violations).toEqual([]);
     expect(errors).toEqual([]);
   });
 }

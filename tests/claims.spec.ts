@@ -84,14 +84,75 @@ test('@claim:offline-reload daily run reloads and plays offline', async ({ brows
   await context.close();
 });
 
-test('@claim:keyboard-play arrows and B resolve one turn and keep board focus', async ({ page }) => {
+test('@claim:keyboard-play all advertised keys work and all 49 cells have spoken labels', async ({ page }) => {
   await page.goto('/demo');
-  const intent = page.locator('[data-cell].is-intent');
-  await intent.focus();
+
+  const cells = page.getByRole('gridcell');
+  await expect(cells).toHaveCount(49);
+  const accessibleNames = new Set<string>();
+  for (let index = 0; index < 49; index += 1) {
+    const cell = cells.nth(index);
+    const x = Number(await cell.getAttribute('data-x'));
+    const y = Number(await cell.getAttribute('data-y'));
+    const coordinate = `${String.fromCharCode(65 + x)}${y + 1}`;
+    const accessibleName = await cell.getAttribute('aria-label');
+    expect(accessibleName, `${coordinate} needs a spoken label`).toBeTruthy();
+    accessibleNames.add(accessibleName!);
+    await expect(cell).toHaveAccessibleName(new RegExp(`^${coordinate}\\.`));
+
+    if (await cell.getAttribute('data-enemy')) {
+      await expect(cell).toHaveAccessibleName(/health\..*Press Enter to fire\.$/);
+    } else if (await cell.getAttribute('data-car')) {
+      await expect(cell).toHaveAccessibleName(/integrity\. (Press Enter to patch\.|At full integrity\.)$/);
+    } else {
+      await expect(cell).toHaveAccessibleName(/Empty (ground|track) cell\.$/);
+    }
+  }
+  expect(accessibleNames.size).toBe(49);
+
+  await page.getByRole('button', { name: 'Board settings' }).focus();
+  await page.keyboard.press('Tab');
+  await expect(page.locator('[data-cell]:focus')).toHaveCount(1);
+
+  const center = page.locator('[data-cell][data-x="3"][data-y="3"]');
+  await center.focus();
   await page.keyboard.press('ArrowRight');
+  await expect(page.locator('[data-cell][data-x="4"][data-y="3"]')).toBeFocused();
+  await page.keyboard.press('ArrowDown');
+  await expect(page.locator('[data-cell][data-x="4"][data-y="4"]')).toBeFocused();
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.locator('[data-cell][data-x="3"][data-y="4"]')).toBeFocused();
+  await page.keyboard.press('ArrowUp');
+  await expect(center).toBeFocused();
+
+  const resetSample = async () => {
+    await page.getByRole('button', { name: 'Reset demo' }).click();
+    await expect(page.locator('[data-turn]')).toHaveText('1');
+  };
+
+  await page.locator('[data-cell].is-intent').focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('[data-turn]')).toHaveText('2');
+  await expect(page.locator('[data-status]')).toContainText('Fired on');
+
+  await resetSample();
+  await page.locator('[data-cell].is-intent').focus();
+  await page.keyboard.press('Space');
+  await expect(page.locator('[data-turn]')).toHaveText('2');
+  await expect(page.locator('[data-status]')).toContainText('Fired on');
+
+  await resetSample();
+  await page.locator('[data-cell].is-intent').focus();
   await page.keyboard.press('b');
   await expect(page.locator('[data-turn]')).toHaveText('2');
   await expect(page.locator('[data-status]')).toContainText('Braced the train');
+  await expect(page.locator('[data-cell]:focus')).toHaveCount(1);
+
+  await resetSample();
+  await page.locator('[data-cell].is-intent').focus();
+  await page.keyboard.press('w');
+  await expect(page.locator('[data-turn]')).toHaveText('2');
+  await expect(page.locator('[data-status]')).toContainText('Held position');
   await expect(page.locator('[data-cell]:focus')).toHaveCount(1);
 });
 

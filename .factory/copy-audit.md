@@ -6,7 +6,7 @@ Audited 6 September 2026. Counts treat hyphenated terms and displayed numbers as
 | --- | ---: | --- |
 | 7 × 7 daily strategy game | 6 | Pass |
 | Defend a train, one turn at a time | 8 | Pass |
-| For roguelike players who want a readable 20-minute daily run without real-time combat. | 13 | Pass |
+| For roguelike players who want a readable 15-turn daily run without real-time combat. | 13 | Pass |
 | Try it with sample data | 5 | Pass |
 | Starts a fixed practice run. | 5 | Pass |
 | First action: choose the copper-marked enemy, then Fire. | 8 | Pass |

@@ -300,7 +300,7 @@ function intentPanel(): string {
     ? `<p class="weather active"><b>${weather.name}:</b> ${weather.rule}</p>`
     : `<p class="weather"><b>Final weather:</b> ${weather.name}. Its rule starts at stop three.</p>`;
   return `
-    <aside class="turn-panel" aria-label="Current turn">
+    <section class="turn-panel">
       <div class="turn-line">
         <p class="eyebrow">Turn <span data-turn>${run.totalTurns + 1}</span> of ${TURNS_PER_STOP * STOP_COUNT}</p>
         <p class="seed">${escapeHtml(run.config.seed)}</p>
@@ -318,14 +318,14 @@ function intentPanel(): string {
         </div>
         <p class="key-help">Keys: arrows move · Enter acts · B braces · W holds</p>
       </div>
-    </aside>`;
+    </section>`;
 }
 
 function endPanel(): string {
   const won = run.status === 'won';
   const health = run.cars.reduce((total, car) => total + car.hp, 0);
   return `
-    <aside class="turn-panel end-panel ${won ? 'won' : 'lost'}" aria-label="Run result" tabindex="-1" data-end-panel>
+    <section class="turn-panel end-panel ${won ? 'won' : 'lost'}" tabindex="-1" data-end-panel>
       <p class="eyebrow">${won ? 'Three stops complete' : `Stopped on turn ${run.totalTurns}`}</p>
       <h3>${won ? 'Route complete' : 'Train stopped'}</h3>
       <p>${won
@@ -337,7 +337,7 @@ function endPanel(): string {
         <div><dt>Brake tokens</dt><dd>${run.bracesLeft}</dd></div>
       </dl>
       <button type="button" class="primary-button" data-restart>Restart ${isDemoRoute() ? 'sample' : 'today’s seed'}</button>
-    </aside>`;
+    </section>`;
 }
 
 function carStatus(): string {
@@ -398,7 +398,7 @@ function homePage(): string {
         <div class="intro-copy">
           <p class="product-label">7 × 7 daily strategy game</p>
           <h1 tabindex="-1">Defend a train, one turn at a time</h1>
-          <p class="audience">For roguelike players who want a readable 20-minute daily run without real-time combat.</p>
+          <p class="audience">For roguelike players who want a readable 15-turn daily run without real-time combat.</p>
           <div class="primary-row">
             <a class="primary-button" href="/demo" data-nav>Try it with sample data</a>
             <span>Starts a fixed practice run.</span>
@@ -693,10 +693,10 @@ function bindGameInteractions(): void {
         moveBoardFocus(button, ...directions[event.key]!);
       } else if (event.key.toLowerCase() === 'b') {
         event.preventDefault();
-        act({ type: 'brace' }, selectedCell ?? undefined);
+        act({ type: 'brace' }, { x: Number(button.dataset.x), y: Number(button.dataset.y) });
       } else if (event.key.toLowerCase() === 'w') {
         event.preventDefault();
-        act({ type: 'wait' }, selectedCell ?? undefined);
+        act({ type: 'wait' }, { x: Number(button.dataset.x), y: Number(button.dataset.y) });
       }
     });
   });

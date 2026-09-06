@@ -1,1 +1,1 @@
-Defend a train across three stops in a 20-minute turn-based daily run.
+Defend a train for 15 turns across three stops in a turn-based daily game.

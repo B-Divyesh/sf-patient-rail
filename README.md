@@ -1,6 +1,6 @@
 # Patient Rail
 
-Patient Rail is a 7 by 7 turn-based train-defense game for roguelike players who want a readable 20-minute daily run. You take one action, watch the single shown enemy intent resolve, and keep three train cars intact across three five-turn stops.
+Patient Rail is a 7 by 7 turn-based train-defense game for roguelike players who want a readable 15-turn daily run. You take one action, watch the single shown enemy intent resolve, and keep three train cars intact across three five-turn stops.
 
 Play: <https://patient-rail.sociobot.in>
 
@@ -16,7 +16,7 @@ Sample: <https://patient-rail.sociobot.in/demo>
 - A fixed sample stored separately from daily progress.
 - A win screen, loss screen, and one-action restart.
 
-A full run is 15 turns and is intended to take about 20 minutes when decisions are considered. The automated finishability check plays the safe Fire route through all 108 possible tactical configurations. A date selects one of six car orders, six enemy-family orders, and three weather rules. Route names do not affect a turn. It does not assert that every possible player choice wins.
+A full run is 15 turns. There is no timer, so its duration depends on the player. The automated finishability check plays the safe Fire route through all 108 possible tactical configurations. A date selects one of six car orders, six enemy-family orders, and three weather rules. Route names do not affect a turn. It does not assert that every possible player choice wins.
 
 ## Offline archive offer
 

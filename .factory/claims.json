@@ -1,7 +1,7 @@
 [
   {
     "id": "complete-seeded-run",
-    "claim": "The sample seed can be played through all three stops to a win.",
+    "claim": "The sample seed reaches a win after 15 turns across all three stops.",
     "where": "game goal, README",
     "test": "npm test -- --grep @claim:complete-seeded-run",
     "sandbox": "fresh browser context at /demo; play visible intents until the win summary"
@@ -15,7 +15,7 @@
   },
   {
     "id": "finishable-seeds",
-    "claim": "Every dated seed has a safe route through three stops.",
+    "claim": "Every dated seed has a 15-turn safe route through three stops.",
     "where": "How it works, README",
     "test": "npm test -- --grep @claim:finishable-seeds",
     "sandbox": "deterministic engine; play the safe Fire route for all 108 possible car-order, enemy-family-order, and weather configurations that a dated seed can select"
@@ -43,10 +43,10 @@
   },
   {
     "id": "keyboard-play",
-    "claim": "The board and turn actions work with a keyboard.",
-    "where": "controls, README",
+    "claim": "The board has spoken labels for all 49 cells, and every advertised keyboard control works.",
+    "where": "How to play controls, README",
     "test": "npm test -- --grep @claim:keyboard-play",
-    "sandbox": "fresh demo; focus board; use arrows and B; assert one resolved turn and focus remains usable"
+    "sandbox": "fresh demo; validate 49 accessible cell names; use Tab, all four arrows, Enter, Space, B, and W; assert focus destinations and action outcomes"
   },
   {
     "id": "resume-progress",
