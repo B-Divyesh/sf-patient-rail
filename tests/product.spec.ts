@@ -67,14 +67,24 @@ test('phone layout shows job, action, and usable game without body overflow', as
 });
 
 test('designed 404 loads its same-origin stylesheet under the production CSP', async ({ page }) => {
-  const [htmlResponse, configResponse] = await Promise.all([
-    page.request.get('/404.html'),
-    page.request.get('/staticwebapp.config.json'),
-  ]);
-  expect(htmlResponse.ok()).toBe(true);
-  expect(configResponse.ok()).toBe(true);
-  const html = await htmlResponse.text();
-  const config = await configResponse.json() as { globalHeaders: { 'Content-Security-Policy': string } };
+  const live404 = await page.request.get('/404');
+  let html: string;
+  let csp: string;
+
+  if (live404.status() === 404 && live404.headers()['content-security-policy']) {
+    html = await live404.text();
+    csp = live404.headers()['content-security-policy'];
+  } else {
+    const [htmlResponse, configResponse] = await Promise.all([
+      page.request.get('/404.html'),
+      page.request.get('/staticwebapp.config.json'),
+    ]);
+    expect(htmlResponse.ok()).toBe(true);
+    expect(configResponse.ok()).toBe(true);
+    html = await htmlResponse.text();
+    const config = await configResponse.json() as { globalHeaders: { 'Content-Security-Policy': string } };
+    csp = config.globalHeaders['Content-Security-Policy'];
+  }
   const errors: string[] = [];
   page.on('console', (message) => {
     if (message.type() === 'error') errors.push(message.text());
@@ -83,7 +93,7 @@ test('designed 404 loads its same-origin stylesheet under the production CSP', a
     await route.fulfill({
       status: 404,
       contentType: 'text/html',
-      headers: { 'Content-Security-Policy': config.globalHeaders['Content-Security-Policy'] },
+      headers: { 'Content-Security-Policy': csp },
       body: html,
     });
   });

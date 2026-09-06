@@ -1,42 +1,36 @@
 # Patient Rail handoff
 
-## Independent verification 1 — FAIL
+## Repair verification — PASS
 
-Independent verification on 6 September 2026 reviewed implementation `78effd5` and documentation `3546e32`. The result is **FAIL** with three findings and one incompletely tested public claim. See `.factory/verification-1.md` for evidence and repair steps.
+The three findings from independent verification 1 are repaired and retested on 6 September 2026. The deployed product implementation is `0b56f836fbb81d7dfaaa7a5bf67464455336d640`.
 
-- The live `/404` page blocks its inline CSS under the deployed CSP and logs a CSP console error.
-- At 390 by 844, the active board starts at y=823 and its first usable cell at y=831; it is not usable in the initial viewport.
-- The public assertion that every dated seed has a safe route is tested for only 366 fixed dates. Reword it to the verified scope or prove the complete domain.
+- **V1 — 404 CSP:** `404.html` now loads the cut-paper styles from same-origin `/404.css`. A fresh HTTPS browser received HTTP 404, rendered the navy and cream recovery page, and reported no CSP errors.
+- **V2 — phone first viewport:** at 390 by 844, the copper-marked playable cell is at y=752.6 through y=796.6. It is fully visible, resolves turn one on tap, and does not scroll the page. The first screen still states the job, audience, sample action, first action, and three facts.
+- **V3 — dated seeds:** the finishability claim now plays the safe Fire route through all 108 possible tactical configurations: six car orders, six enemy-family orders, and three weather rules. Route labels never affect a turn. Every configuration won in 15 turns with all cars above zero integrity.
 
-All declared claim commands, `npm test`, `npm run build`, fresh live win/loss/restart, offline reload, keyboard, privacy-origin, route, link, and named-route axe checks otherwise passed. Do not treat this handoff as a product acceptance until those three findings are repaired and independently retested.
+The earlier failing report remains at `.factory/verification-1.md` as history. Its documentation commit was `cf409a344b9d3142d78b35656e45faca832c5446`; it reported the pre-repair implementation `78effd5584066428b9a838540e06546e8eb89c56`.
 
-## Outcome
+## Product
 
-Patient Rail is a complete first-release browser game at <https://patient-rail.sociobot.in>. The active 7 by 7 board appears on the first screen. Each 15-turn run has three stops, one player action per turn, one visible enemy intent, seeded train layouts, seeded enemy families, and a final weather rule.
+Patient Rail is a deterministic 7 by 7, turn-based train-defense game for roguelike players who want a readable daily run instead of real-time combat. The active board is on the first screen. A 15-turn run has three stops, one player action per turn, one visible enemy intent, seeded train layouts, enemy families, and a final weather rule.
 
-Implementation deployed: `78effd5584066428b9a838540e06546e8eb89c56`.
-
-The repository started at scaffold `0060755e0f61082e429edde918b0d52e3cf511c6`. It contained no game, design file, tests, or substantive earlier handoff. No earlier review findings were present to carry forward.
+The live URL is <https://patient-rail.sociobot.in>.
 
 ## Delivered
 
 - Daily UTC seed and fixed sample seed `SAMPLE-EMBER-7`.
 - Fire, Patch, limited Brace, and Hold position actions.
-- Win, loss, and restart paths with a visible turn log and run summary.
-- Deterministic generator for car order, route names, enemy families, and weather.
-- Saved daily progress, isolated sample storage, damaged-save recovery, and persistent board settings.
-- Arrow-key grid movement, Enter and Space activation, B and W shortcuts, cell action labels, live status text, and designed focus states.
-- Responsive desktop and 390 px phone layouts with 44 px board targets.
+- Visible intent, win, loss, restart, saved daily progress, damaged-save recovery, and saved board settings.
+- Keyboard grid movement, Enter/Space actions, B and W shortcuts, spoken cell labels, live status text, and designed focus states.
+- A compact phone layout that keeps the active intent cell usable before scroll.
 - Same-origin service worker for offline reload after the first online visit.
-- Real routes for demo, rules, archive, activation status, privacy, and terms.
-- A designed `/404` response with HTTP 404 status.
-- Self-hosted IBM Plex Sans and IBM Plex Mono assets.
-- Original cut-paper CSS/SVG artwork and raster social/touch exports.
+- Real routes for demo, rules, archive, activation status, privacy, terms, and a designed HTTP 404 response.
+- Self-hosted IBM Plex Sans and IBM Plex Mono assets plus original CSS/SVG cut-paper artwork.
 - Exact US$8 one-time offline archive metadata for the billing operator.
 
 ## Verification
 
-Clean checkout verification used Node.js 22 and npm 10:
+Clean setup used Node.js 22 and npm 10:
 
 ```sh
 npm ci
@@ -44,42 +38,25 @@ npm test
 npm run build
 ```
 
-Results:
+- `npm ci`: 0 dependency vulnerabilities.
+- `npm run build`: passed and wrote `dist/`; production JavaScript is 10.78 KB gzip.
+- Local `npm test`: 7 deterministic engine tests and 25 Chromium tests passed.
+- All 12 commands declared in `.factory/claims.json` passed separately: complete run, loss/restart, complete seed-domain proof, demo isolation, local privacy, offline reload, keyboard play, resumed progress, settings, invalid actions, seed variation, and pending billing.
+- Full `npm test` also passed against the HTTPS product after deployment: 7 engine tests and 25 browser tests.
+- Fresh desktop HTTPS check: title, one h1, main landmark, active board, plain first action, and no console errors.
+- Fresh phone HTTPS check: the intent cell was fully visible at 390 by 844; tapping it advanced to turn two with `scrollY` unchanged.
+- Fresh demo HTTPS checks: the persistent sample label showed; 15 visible-intent actions reached the win screen; restart returned to turn one; Hold position reached the loss screen.
+- Fresh `/404` HTTPS check: GET returned 404; the styled recovery page loaded; no CSP error occurred. An expected failed-resource notice for a deliberately 404 document is not counted as a page defect.
+- Axe found no serious or critical issues on `/`, `/demo`, `/how-to-play`, `/archive`, `/license`, `/privacy`, and `/terms`.
+- The live JavaScript asset `index-DSD14DYL.js` matched the local production artifact by SHA-256: `349f5cd3760706d5496fff33900bcbe4e1d533c294bde9d96245599537fe8a21`.
 
-- Unit tests: 6 passed.
-- Browser, claim, route, mobile, recovery, and accessibility tests: 24 passed.
-- Every one of the 12 commands in `.factory/claims.json` passed separately from the clean checkout.
-- Finishability: 366 dated seeds reached a win in 15 turns by firing on each shown intent.
-- Sample win: 15 actions, 10 threats cleared, 13 integrity left.
-- Sample loss: 11 Hold position actions, then a train car reached zero.
-- Restart returned the sample to turn one, full integrity, three brake tokens, and the opening intent.
-- Axe found no serious or critical issue on `/`, `/demo`, `/how-to-play`, `/archive`, `/license`, `/privacy`, or `/terms`.
-- `verify-url.sh` found one title, `lang="en"`, one main landmark, one h1, no missing alt text, no unlabeled buttons, and no console errors.
-- Live `/404` returned HTTP 404 and the designed recovery page. All named routes, robots, sitemap, manifest, and social image returned 200.
-- The deployed JavaScript SHA-256 matched the local production artifact.
-- Dependency audit reported zero vulnerabilities.
-
-Live mobile Lighthouse results:
-
-- Performance: 97
-- Accessibility: 100
-- Best practices: 100
-- SEO: 100
-- FCP: 1.2 s
-- LCP: 1.2 s
-- CLS: 0.097
-- Total blocking time: 0 ms
-- Initial transfer: 84,389 bytes; JavaScript 11,133 bytes; fonts 61,060 bytes
-
-A 390 by 844 browser with 4× CPU throttling produced 120 frames in 1,999.9 ms: 60.0 frames per second with a 16.8 ms maximum frame interval. Gameplay itself is turn-based and does not depend on animation.
-
-Evidence is in `.factory/evidence/`: desktop and phone first screens, win and loss end screens, run summary, Lighthouse JSON, and local/live verifier output.
+Current evidence includes the corrected phone first screen in `.factory/evidence/phone-first-screen.png`. The existing desktop, win, and loss evidence remains applicable.
 
 ## Privacy and operations
 
-There is no backend, account, telemetry, third-party script, or runtime model call. Game state is limited to namespaced browser local storage. The sample uses `demo:patient-rail:run:v1`; daily keys use `patient-rail:daily:*`. The live CSP restricts scripts, styles, fonts, images, connections, workers, and forms to the product origin.
+There is no backend, account, telemetry, third-party script, or runtime model call. Game state is limited to namespaced browser local storage. The sample uses `demo:patient-rail:run:v1`; daily keys use `patient-rail:daily:*`. The CSP restricts scripts, styles, fonts, images, connections, workers, and forms to the product origin.
 
-The deployment used only `sf-patient-rail`, in Central US, with the factory static deployment path. No shared service, database, secret, staging slot, or unrelated resource was read or changed.
+The repair deployed only the existing static product `sf-patient-rail` in Central US. It reused the existing static app and custom domain; no shared service, database, staging slot, unrelated resource, or secret was read or changed.
 
 ## Known dependency
 
@@ -92,4 +69,4 @@ The separate billing operator can use `/work/.evidence/billing-offer.json`. It d
 1. Register the one-time offer through the Sociobot billing operator.
 2. Add the documented entitlement validation call to `/license` after the operator provides the registered contract.
 3. Re-test checkout, signed entitlement, restore purchase, and offline dated-seed selection before advertising activation.
-4. Measure the brief’s completion and return-rate goals only if a future privacy-preserving, consented measurement plan is approved.
+4. Measure the brief’s completion and return-rate goals only if a privacy-preserving, consented measurement plan is approved.
