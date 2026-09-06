@@ -94,7 +94,7 @@ const CAR_DATA: Record<CarKind, Pick<Car, 'name' | 'short' | 'maxHp'>> = {
 const FAMILY_DATA: Record<FamilyId, { name: string; short: string; hp: number; damage: number }> = {
   'copper-beetles': { name: 'Copper beetle', short: 'CB', hp: 2, damage: 1 },
   'track-cutters': { name: 'Track cutter', short: 'TC', hp: 3, damage: 2 },
-  'storm-crows': { name: 'Storm crow', short: 'SC', hp: 2, damage: 2 },
+  'storm-crows': { name: 'Storm crow', short: 'SC', hp: 2, damage: 4 },
 };
 
 export const FAMILY_LABELS: Record<FamilyId, string> = {

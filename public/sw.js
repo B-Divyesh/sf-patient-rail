@@ -1,5 +1,5 @@
 const CACHE = 'patient-rail-shell-v1';
-const CORE = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/apple-touch-icon.svg', '/social-card.svg'];
+const CORE = ['/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/apple-touch-icon.png', '/social-card.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE)).then(() => self.skipWaiting()));

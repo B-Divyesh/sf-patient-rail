@@ -35,7 +35,7 @@ Body text uses deep navy on cream (greater than 12:1). Cream on navy is greater 
 All shipped art is original and hand-authored for this repository. There are no generated or third-party images.
 
 - The board, track sleepers, train cars, enemy markers, ticket notches and paper shadows are CSS geometry.
-- `public/social-card.svg`, `public/favicon.svg`, and `public/apple-touch-icon.svg` are hand-authored vector cut-paper compositions made for Patient Rail.
+- `public/social-card.svg`, `public/favicon.svg`, and `public/apple-touch-icon.svg` are hand-authored vector cut-paper compositions made for Patient Rail. The PNG social and touch files are local browser renders of those sources.
 - Enemy silhouettes use circles, clipped wedges and paper tabs. Text labels remain outside decorative shapes.
 - No copyrighted train, game-world, logo or character asset is used.
 
@@ -51,4 +51,4 @@ No gameplay rule depends on animation. Buttons press by 1 px and paper layers se
 
 ## Difficulty curve
 
-Each run has three five-turn stops. Stop one teaches firing and bracing with copper beetles. Stop two adds tougher track cutters or storm crows. Stop three applies one visible weather rule. Each turn resolves exactly one announced enemy intent. A conservative Brace action cancels up to two damage, so every generated seed has a safe finish; firing and patching earn a healthier finish. The automated finishability check plays 366 dated seeds through an end state.
+Each run has three five-turn stops. Stop one teaches firing and bracing with copper beetles. Stop two adds tougher track cutters or storm crows. Stop three applies one visible weather rule. Each turn resolves exactly one announced enemy intent. Firing on the shown enemy provides a safe route through every generated seed. Three Brace tokens can cancel up to two damage when the player chooses another action. The automated finishability check plays 366 dated seeds through a winning end state.

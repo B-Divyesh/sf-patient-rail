@@ -464,7 +464,7 @@ function howToPlayPage(): string {
         <ul>
           <li><b>Fire:</b> choose an enemy to deal two damage.</li>
           <li><b>Patch:</b> choose a damaged car to restore one integrity.</li>
-          <li><b>Brace:</b> spend one brake token to block the shown attack.</li>
+          <li><b>Brace:</b> spend one brake token to block up to two damage.</li>
           <li><b>Hold position:</b> use a turn without changing the board.</li>
         </ul>
         <p>After your valid action, the shown enemy acts. Invalid choices do not use a turn.</p>

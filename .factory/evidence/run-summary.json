@@ -6,8 +6,8 @@
     "endScreen": "THREE STOPS COMPLETE\n\nRoute complete\n\nYou reached Summit Shed with 13 train integrity.\n\nThreats cleared\n10\nTurns used\n15\nBrake tokens\n3\nRestart sample"
   },
   "loss": {
-    "actions": 15,
+    "actions": 11,
     "strategy": "Hold position",
-    "endScreen": "THREE STOPS COMPLETE\n\nRoute complete\n\nYou reached Summit Shed with 9 train integrity.\n\nThreats cleared\n0\nTurns used\n15\nBrake tokens\n3\nRestart sample"
+    "endScreen": "STOPPED ON TURN 11\n\nTrain stopped\n\nA train car lost all integrity before the final stop.\n\nThreats cleared\n0\nTurns used\n11\nBrake tokens\n3\nRestart sample"
   }
 }
